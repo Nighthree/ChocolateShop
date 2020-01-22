@@ -5,7 +5,7 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 
 import App from './App';
-import VueRouter from 'vue-router';
+import router from './router';
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
@@ -15,5 +15,5 @@ new Vue({
   el: '#app',
   components: { App },
   template: '<App/>',
-  VueRouter,
+  router,
 })
