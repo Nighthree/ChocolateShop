@@ -1,34 +1,19 @@
 <template>
   <div>
-    12345
+    <div>這裡是首頁</div>
+    <router-link to="/login">login</router-link>
+    <router-link to="/backstage">登入到後台</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
-  data () {
-    return {
-      
-    }
+  data() {
+    return {};
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style >
 </style>
