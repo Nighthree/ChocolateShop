@@ -1,7 +1,7 @@
 <template>
   <div>
     <form class="form-signin" @submit.prevent="singin">
-      <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
+      <h1 class="h3 mb-3 font-weight-normal">登入後台</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input
         type="email"
@@ -48,13 +48,13 @@ export default {
       const vm = this;
       vm.$http.post(api, vm.user).then(response => {
         if (response.data.success) {
-          vm.$router.push("/Backstage");
+          vm.$router.push("/backstage/products");
         } else {
           vm.$router.push("/");
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
