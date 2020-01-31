@@ -1,6 +1,30 @@
 .logo {
-  width: 114px;
-  height: 18px;
-  background-image: url(../assets/images/chocolate_logo.png);
+  width: 125px;
+  height: 60px;
+  background-image: url(./assets/images/chocolate_logo.png);
   background-repeat: no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 130%;
+}
+
+// $lightChoco
+// $yellowChoco
+// $Choco
+.navbar-light .navbar-nav .chocoText {
+  color: $Choco;
+  font-weight: bold;
+  text-align: center;
+  &:hover {
+    background-color: $yellowChoco;
+  }
+  &:active {
+    background-color: $Choco;
+    color: $white;
+  }
+}
+.navbar-light .navbar-nav .chocoText.active {
+  color: $white;
+  background-color: $Choco;
 }

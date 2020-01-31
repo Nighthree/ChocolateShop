@@ -4,9 +4,10 @@ import VueRouter from 'vue-router';
 import Home from '@/components/Home';
 import Login from '@/components/Login';
 import Backstage from '@/components/Backstage';
-import Products from '@/components/BackComponents/Pages/Products';
+import ProductList from '@/components/BackComponents/Pages/ProductList';
 import OrderList from '@/components/BackComponents/Pages/OrderList';
-import CouponList from '@/components/BackComponents/Pages/CouponList'
+import CouponList from '@/components/BackComponents/Pages/CouponList';
+// import Products from '@/components/HomeComponents/Pages/Products'
 
 
 Vue.use(VueRouter);
@@ -22,6 +23,13 @@ export default new VueRouter({
       path: '/',
       name: 'Home',
       component: Home,
+      // children:[
+      //   {
+      //     path: 'products',
+      //     name: 'Products',
+      //     component: Products,
+      //   },
+      // ],
     },
     {
       path: '/login',
@@ -34,9 +42,9 @@ export default new VueRouter({
       component: Backstage,
       children:[
         {
-          path: 'products',
-          name: 'Products',
-          component: Products,
+          path: 'productlist',
+          name: 'ProductList',
+          component: ProductList,
           meta: { requiresAuth: true },
         },
         {

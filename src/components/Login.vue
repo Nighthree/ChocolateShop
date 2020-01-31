@@ -48,7 +48,7 @@ export default {
       const vm = this;
       vm.$http.post(api, vm.user).then(response => {
         if (response.data.success) {
-          vm.$router.push("/backstage/products");
+          vm.$router.push("/backstage/productlist");
         } else {
           vm.$router.push("/");
         }
