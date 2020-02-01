@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-right my-4">
-      <button class="btn btn-primary" @click.prevent="getCart()">取得資料</button>
+      <button class="btn btn-primary" @click.prevent="getProducts()">取得資料</button>
     </div>
     <loading :active.sync="isLoading"></loading>
     <div class="row mt-4">
@@ -99,16 +99,13 @@ import Pagination from "../BackComponents/Pages/Pagination";
 export default {
   data() {
     return {
-      isLoading: false,
       products: [],
       paginations: {},
       status: {
         watchMoreLoading: "",
         addCartLoading: "",
-        categoryTitle: 'all',
       },
       product: [],
-      category:[],
       cart:[],
     };
   },
@@ -116,10 +113,10 @@ export default {
     getProducts(page = 1) {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/products?page=${page}`;
-      vm.isLoading = true;
+      vm.$store.dispatch('updateLoading', true);
       vm.$http.get(api).then(response => {
         vm.products = response.data.products;
-        vm.isLoading = false;
+        vm.$store.dispatch('updateLoading', false);
         vm.paginations = response.data.pagination;
       });
       vm.getCategory();
@@ -151,10 +148,10 @@ export default {
     getCart() {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
-      vm.isLoading = true;
+      // vm.$store.state.status.isLoading = true;
       vm.$http.get(api).then(response => {
         vm.cart = response.data.data;
-        vm.isLoading = false;
+        // vm.$store.state.status.isLoading = false;
       });
     },
     getCategory(){
@@ -166,8 +163,13 @@ export default {
       vm.category = Array.from(new Set(categoryItem));
     },
   },
+  computed:{
+    isLoading(){
+      return this.$store.state.status.isLoading;
+    },
+  },
   components: {
-    Pagination
+    Pagination,
   },
   created() {
     const vm = this;

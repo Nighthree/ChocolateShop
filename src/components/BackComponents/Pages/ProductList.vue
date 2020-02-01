@@ -31,8 +31,14 @@
             </td>
             <td class="text-center">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button class="btn btn-primary" @click="OpenModel(false, item)"><span class="d-md-block d-none">編輯</span><i class="fas fa-edit d-block d-md-none"></i></button>
-                <button class="btn btn-outline-danger" @click="OpenDeleteModal(item)"><span class="d-md-block d-none">刪除</span><i class="fas fa-trash-alt d-block d-md-none"></i></button>
+                <button class="btn btn-primary" @click="OpenModel(false, item)">
+                  <span class="d-md-block d-none">編輯</span>
+                  <i class="fas fa-edit d-block d-md-none"></i>
+                </button>
+                <button class="btn btn-outline-danger" @click="OpenDeleteModal(item)">
+                  <span class="d-md-block d-none">刪除</span>
+                  <i class="fas fa-trash-alt d-block d-md-none"></i>
+                </button>
               </div>
             </td>
           </tr>
@@ -241,7 +247,6 @@ export default {
       temProduct: {},
       isNew: false,
       modalTitle: "",
-      isLoading: false,
       imgLoading: false,
       paginations: {}
     };
@@ -253,10 +258,10 @@ export default {
     getProducts(page = 1) {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/products?page=${page}`;
-      vm.isLoading = true;
+      vm.$store.state.status.isLoading = true;
       this.$http.get(api).then(response => {
         vm.products = response.data.products;
-        vm.isLoading = false;
+        vm.$store.state.status.isLoading = false;
         vm.paginations = response.data.pagination;
       });
     },
@@ -312,7 +317,7 @@ export default {
     },
     uploadImg() {
       const vm = this;
-      vm.imgLoading = true;
+      vm.$store.state.status.isLoading = true;
       const uploadFile = vm.$refs.files.files[0];
       const formData = new FormData();
       formData.append("file-to-upload", uploadFile);
@@ -326,13 +331,18 @@ export default {
         .then(response => {
           if (response.data.success) {
             vm.$set(vm.temProduct, "imageUrl", response.data.imageUrl);
-            vm.imgLoading = false;
+            vm.$store.state.status.isLoading = false;
             vm.$bus.$emit("message:push", "圖片上傳成功", "success");
           } else {
-            vm.imgLoading = false;
+            vm.$store.state.status.isLoading = false;
             vm.$bus.$emit("message:push", response.data.message, "danger");
           }
         });
+    }
+  },
+  computed: {
+    isLoading() {
+      return this.$store.state.status.isLoading;
     }
   },
   created() {
