@@ -1,8 +1,10 @@
 <template>
   <div>
+    <div class="text-right my-4">
+      <button class="btn btn-primary" @click.prevent="getCart()">取得資料</button>
+    </div>
     <loading :active.sync="isLoading"></loading>
     <div class="row mt-4">
-      
       <div class="col-md-4 mb-4" v-for="item in products" :key="item.id">
         <div class="card border-0 shadow-sm h-100">
           <div
@@ -24,7 +26,7 @@
               class="btn btn-outline-secondary btn-sm"
               @click.prevent="OpenProductModal(item.id)"
             >
-              <i class="fas fa-spinner fa-spin" v-if="watchMoreLoading == item.id"></i>
+              <i class="fas fa-spinner fa-spin" v-if="status.watchMoreLoading == item.id"></i>
               查看更多
             </button>
             <button
@@ -32,7 +34,7 @@
               class="btn btn-outline-danger btn-sm ml-auto"
               @click.prevent="addCart(item.id)"
             >
-              <i class="fas fa-spinner fa-spin" v-if="addCartLoading == item.id"></i>
+              <i class="fas fa-spinner fa-spin" v-if="status.addCartLoading == item.id"></i>
               加到購物車
             </button>
           </div>
@@ -41,10 +43,8 @@
     </div>
 
     <Pagination :pagenation="paginations" @changeCurrPage="getProducts"></Pagination>
-    <!-- <ProductModal @openModal="OpenProductModal(id)"></ProductModal> -->
 
-
-<!-- 查看更多Modal -->
+    <!-- 查看更多Modal -->
     <div
       class="modal fade"
       id="productModal"
@@ -82,21 +82,19 @@
               <strong>{{ product.num * product.price }}</strong> 元
             </div>
             <button type="button" class="btn btn-primary" @click="addCart(product.id, product.num)">
-              <i class="fas fa-spinner fa-spin" v-if="addCartLoading == product.id"></i>
+              <i class="fas fa-spinner fa-spin" v-if="status.addCartLoading == product.id"></i>
               加入購物車
             </button>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 import $ from "jquery";
-import Pagination from "../../BackComponents/Pages/Pagination";
-import ProductModal from "./ProductModal";
+import Pagination from "../BackComponents/Pages/Pagination";
 
 export default {
   data() {
@@ -104,9 +102,14 @@ export default {
       isLoading: false,
       products: [],
       paginations: {},
-      watchMoreLoading: "",
-      addCartLoading: "",
-      product: []
+      status: {
+        watchMoreLoading: "",
+        addCartLoading: "",
+        categoryTitle: 'all',
+      },
+      product: [],
+      category:[],
+      cart:[],
     };
   },
   methods: {
@@ -119,11 +122,12 @@ export default {
         vm.isLoading = false;
         vm.paginations = response.data.pagination;
       });
+      vm.getCategory();
     },
     addCart(id, qty = 1) {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
-      vm.addCartLoading = id;
+      vm.status.addCartLoading = id;
       const cart = {
         product_id: id,
         qty
@@ -131,17 +135,17 @@ export default {
       vm.$http.post(api, { data: cart }).then(response => {
         $("#productModal").modal("hide");
         vm.getCart();
-        vm.addCartLoading = "";
+        vm.status.addCartLoading = "";
       });
     },
     OpenProductModal(id) {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/product/${id}`;
-      vm.watchMoreLoading = id;
+      vm.status.watchMoreLoading = id;
       vm.$http.get(api).then(response => {
         vm.product = response.data.product;
         $("#productModal").modal("show");
-        vm.watchMoreLoading = "";
+        vm.status.watchMoreLoading = "";
       });
     },
     getCart() {
@@ -153,10 +157,17 @@ export default {
         vm.isLoading = false;
       });
     },
+    getCategory(){
+      const vm = this;
+      const categoryItem = [];
+      vm.products.forEach(function(item){
+        categoryItem.push(item.category);
+      });
+      vm.category = Array.from(new Set(categoryItem));
+    },
   },
   components: {
-    Pagination,
-    ProductModal
+    Pagination
   },
   created() {
     const vm = this;

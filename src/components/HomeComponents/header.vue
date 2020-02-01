@@ -41,7 +41,7 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              @click.prevent="cartOnOff()"
+              
             >
               <i class="fas fa-shopping-cart">
                 <span class="badge badge-pill badge-danger">Danger</span>
@@ -73,15 +73,6 @@ export default {
       const vm = this;
       vm.cartActive = !vm.cartActive;
     },
-    getCart() {
-      const vm = this;
-      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
-      vm.isLoading = true;
-      vm.$http.get(api).then(response => {
-        vm.cart = response.data.data;
-        vm.isLoading = false;
-      });
-    }
   },
 
 };

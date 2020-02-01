@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import ProductContent from './ProductPages/ProductContent';
+import ProductContent from './ProductContent';
 
 export default {
   components:{
