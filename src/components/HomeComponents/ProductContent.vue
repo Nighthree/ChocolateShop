@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="text-right my-4">
-      <button class="btn btn-primary" @click.prevent="getProducts()">取得資料</button>
+      <button class="btn btn-primary" @click.prevent="getCart()">取得資料</button>
     </div>
+    <pre>{{  }}</pre>
     <loading :active.sync="isLoading"></loading>
     <div class="row mt-4">
       <div class="col-md-4 mb-4" v-for="item in products" :key="item.id">
@@ -26,7 +27,7 @@
               class="btn btn-outline-secondary btn-sm"
               @click.prevent="OpenProductModal(item.id)"
             >
-              <i class="fas fa-spinner fa-spin" v-if="status.watchMoreLoading == item.id"></i>
+              <i class="fas fa-spinner fa-spin" v-if="watchMoreLoading == item.id"></i>
               查看更多
             </button>
             <button
@@ -34,7 +35,7 @@
               class="btn btn-outline-danger btn-sm ml-auto"
               @click.prevent="addCart(item.id)"
             >
-              <i class="fas fa-spinner fa-spin" v-if="status.addCartLoading == item.id"></i>
+              <i class="fas fa-spinner fa-spin" v-if="addCartLoading == item.id"></i>
               加到購物車
             </button>
           </div>
@@ -79,10 +80,11 @@
           <div class="modal-footer">
             <div class="text-muted text-nowrap mr-3">
               小計
-              <strong>{{ product.num * product.price }}</strong> 元
+              <strong v-if="product.num == Number"> {{ product.num * product.price }} </strong>
+              <strong v-if="product.num !== Number"></strong>  元
             </div>
             <button type="button" class="btn btn-primary" @click="addCart(product.id, product.num)">
-              <i class="fas fa-spinner fa-spin" v-if="status.addCartLoading == product.id"></i>
+              <i class="fas fa-spinner fa-spin" v-if="addCartLoading == product.id"></i>
               加入購物車
             </button>
           </div>
@@ -99,82 +101,68 @@ import Pagination from "../BackComponents/Pages/Pagination";
 export default {
   data() {
     return {
-      products: [],
-      paginations: {},
-      status: {
-        watchMoreLoading: "",
-        addCartLoading: "",
-      },
-      product: [],
-      cart:[],
+
+        // watchMoreLoading: "",
+
+      // product:{},
     };
   },
   methods: {
     getProducts(page = 1) {
-      const vm = this;
-      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/products?page=${page}`;
-      vm.$store.dispatch('updateLoading', true);
-      vm.$http.get(api).then(response => {
-        vm.products = response.data.products;
-        vm.$store.dispatch('updateLoading', false);
-        vm.paginations = response.data.pagination;
-      });
-      vm.getCategory();
+      this.$store.dispatch('getProducts', page);
     },
     addCart(id, qty = 1) {
-      const vm = this;
-      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
-      vm.status.addCartLoading = id;
-      const cart = {
-        product_id: id,
-        qty
-      };
-      vm.$http.post(api, { data: cart }).then(response => {
-        $("#productModal").modal("hide");
-        vm.getCart();
-        vm.status.addCartLoading = "";
-      });
+      this.$store.dispatch('addCart', {id , qty});
+      $("#productModal").modal("hide");
     },
     OpenProductModal(id) {
-      const vm = this;
-      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/product/${id}`;
-      vm.status.watchMoreLoading = id;
-      vm.$http.get(api).then(response => {
-        vm.product = response.data.product;
-        $("#productModal").modal("show");
-        vm.status.watchMoreLoading = "";
-      });
+      this.$store.dispatch('OpenProductModal', id);
+      $("#productModal").modal("show");
+      // const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/product/${id}`;
+      // vm.watchMoreLoading = id;
+      // vm.$http.get(api).then(response => {
+      //   vm.product = response.data.product;
+      //   $("#productModal").modal("show");
+      //   vm.watchMoreLoading = "";
+      // });
     },
     getCart() {
-      const vm = this;
-      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
-      // vm.$store.state.status.isLoading = true;
-      vm.$http.get(api).then(response => {
-        vm.cart = response.data.data;
-        // vm.$store.state.status.isLoading = false;
-      });
-    },
-    getCategory(){
-      const vm = this;
-      const categoryItem = [];
-      vm.products.forEach(function(item){
-        categoryItem.push(item.category);
-      });
-      vm.category = Array.from(new Set(categoryItem));
+      this.$store.dispatch('getCart');
     },
   },
   computed:{
     isLoading(){
       return this.$store.state.status.isLoading;
     },
+    products(){
+      return this.$store.state.products;
+    },
+    categories(){
+      return this.$store.state.status.categories;
+    },
+    paginations(){
+      return this.$store.state.paginations;
+    },
+    addCartLoading(){
+      return this.$store.state.status.addCartLoading;
+    },
+    watchMoreLoading(){
+      return this.$store.state.status.watchMoreLoading;
+    },
+    product(){
+      return this.$store.state.product;
+    }
+    // cart(){
+    //   return this.$store.state.cart;
+    // }
   },
   components: {
     Pagination,
   },
   created() {
-    const vm = this;
-    vm.getProducts();
-    vm.getCart();
-  }
+    this.getProducts();
+    // vm.getCart();
+  },
+
 };
 </script>

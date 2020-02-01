@@ -41,22 +41,51 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              
+              @click.prevent="cartOnOff()"
             >
               <i class="fas fa-shopping-cart">
                 <span class="badge badge-pill badge-danger">Danger</span>
               </i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-menu dropdown-menu-right px-2" aria-labelledby="navbarDropdown">
+              <h6 style="font-size: 12px;">已選擇商品</h6>
+              <table class="table" style="width: 250px">
+                <thead class="d-none">
+                  <tr>
+                    <th scope="col">刪除</th>
+                    <th scope="col">品項</th>
+                    <th scope="col">數量</th>
+                    <th scope="col">金額</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <th scope="row">
+                    <i class="far fa-trash-alt"></i>
+                  </th>
+                  <th>金牌西裝</th>
+                  <th>1件</th>
+                  <th>$520</th>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="far fa-trash-alt"></i>
+                  </th>
+                  <th>金牌女裝</th>
+                  <th>1件</th>
+                  <th>$480</th>
+                </tr>
+              </table>
+              <a href class="btn btn-primary d-block">結帳去</a>
             </div>
           </li>
         </ul>
       </div>
     </nav>
+
+    <div class="text-right my-4">
+      <button class="btn btn-primary" @click.prevent="getCart()">header取得資料</button>
+    </div>
+    <pre>{{  }}</pre>
   </div>
 </template>
 
@@ -64,8 +93,7 @@
 export default {
   data() {
     return {
-      cartActive: false,
-      cart:[],
+      cartActive: false
     };
   },
   methods: {
@@ -73,8 +101,20 @@ export default {
       const vm = this;
       vm.cartActive = !vm.cartActive;
     },
+    getCart() {
+      this.$store.dispatch("getCart");
+      console.log(this.cart);
+    },
   },
-
+  computed: {
+    cart() {
+      return this.$store.state.cart;
+    }
+  },
+  created() {
+    const vm = this;
+    vm.getCart();
+  }
 };
 </script>
 
