@@ -2,8 +2,6 @@
   <div>
     <HomeHeader></HomeHeader>
     <Products></Products>
-    <router-link to="/login">login</router-link>
-    <router-link to="/backstage">直接到後台</router-link>
   </div>
 </template>
 

@@ -20,20 +20,20 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-2">
-            <router-link to class="nav-link rounded-lg chocoText">
+            <router-link to class="nav-link rounded-lg chocoText d-block px-4">
               首頁
               <span class="sr-only">(current)</span>
             </router-link>
           </li>
           <li class="nav-item mx-2">
-            <router-link to="/login" class="nav-link rounded-lg chocoText">
+            <router-link to="/login" class="nav-link rounded-lg chocoText d-block px-3">
               會員登入
               <span class="sr-only">(current)</span>
             </router-link>
           </li>
           <li class="nav-item dropdown mx-2">
             <a
-              class="nav-link dropdown-toggle rounded-lg chocoText"
+              class="nav-link dropdown-toggle rounded-lg chocoText px-4"
               href="#"
               id="navbarDropdown"
               role="button"
@@ -58,9 +58,9 @@
                 </thead>
                 <tbody style="font-size:14px">
                   <tr v-for="item in cart.carts" :key="item.id">
-                    <th scope="row" class="text-danger">
+                    <th scope="row">
                       <a href="#" @click.prevent="delCart(item.id)">
-                        <i class="far fa-trash-alt"></i>
+                        <i class="far fa-trash-alt text-danger"></i>
                       </a>
                     </th>
                     <td>{{ item.product.title }}</td>

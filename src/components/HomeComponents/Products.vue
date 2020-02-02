@@ -2,10 +2,10 @@
   <div class="bg-lightChoco">
     <div class="container">
       <div class="row">
-        <div class="col-md-3 border-right">
+        <div class="col-md-3">
           <button class="btn btn-primary" @click.prevent>測試的按鈕</button>
           <ul class="ulStyle">
-            <li class="text-center productList">
+            <li class="text-center productList active">
               <a href="#" class="d-block text-decoration-none py-2">全部商品</a>
             </li>
             <li class="text-center productList" v-for="item in categories" :key="item">
@@ -24,13 +24,29 @@
 import ProductContent from "./ProductContent";
 
 export default {
+  data() {
+    return {
+      categories: '',
+    };
+  },
   components: {
     ProductContent
   },
-  computed: {
-    categories() {
-      return this.$store.state.status.categories;
-    }
-  }
+  methods: {
+    getCategories() {
+      const vm = this;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/products/all`;
+      vm.$http.get(api).then(response => {
+        const categoryItem = [];
+        response.data.products.forEach(function(item) {
+          categoryItem.push(item.category);
+        });
+        vm.categories = Array.from(new Set(categoryItem)).reverse();
+      });
+    },
+  },
+  created() {
+    this.getCategories();
+  },
 };
 </script>

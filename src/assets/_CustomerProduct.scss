@@ -2,25 +2,45 @@
   list-style: none;
   padding-inline-start: unset;
 }
-.productList{
-  border:2px solid $Choco;
-  box-shadow:2px 2px  $yellowChoco;
+.productList {
+  border: 2px solid $Choco;
+  box-shadow: 2px 2px $yellowChoco;
   margin-bottom: 5px;
-  &:hover{
-    border:2px solid $yellowChoco;
-    box-shadow:2px 2px  transparent;
+  &:hover {
+    border: 2px solid $yellowChoco;
+    box-shadow: 2px 2px transparent;
   }
-  a{
+  a {
     color: $Choco;
     font-weight: 900;
-    &:hover{
+    &:hover {
       background-color: $Choco;
       color: $yellowChoco;
     }
-    &:active{
+    &:active {
       color: $Choco;
       background-color: $yellowChoco;
     }
   }
 }
-
+.productList.active {
+  position: relative;
+  left: 20px;
+  border: 2px solid $yellowChoco;
+  box-shadow: 2px 2px transparent;
+  a {
+    color: $Choco;
+    background-color: $yellowChoco;
+  }
+  &:before{
+    width: 0;
+    height: 0;
+    border-top: 7.5px solid transparent;
+    border-left: 15px solid $yellowChoco;
+    border-bottom: 7.5px solid transparent;
+    content: '';
+    position: absolute;
+    top:10.9px;
+    left: -20px;
+  }
+}

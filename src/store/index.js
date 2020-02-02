@@ -23,7 +23,6 @@ export default new Vuex.Store({
       context.commit('LOADING', true);
       axios.get(api).then(response => {
         context.commit('GET_PRODUCTS', response.data.products);
-        context.commit('GET_CATEGORIES', response.data.products);
         context.commit('GET_PAGINATIONS', response.data.pagination);
         context.commit('LOADING', false);
       });
@@ -48,14 +47,7 @@ export default new Vuex.Store({
       state.status.isLoading = statu;
     },
     GET_PRODUCTS(state, payload) {
-      state.products = payload;
-    },
-    GET_CATEGORIES(state, payload) {
-      const categoryItem = [];
-      payload.forEach(function (item) {
-        categoryItem.push(item.category);
-      });
-      state.status.categories = Array.from(new Set(categoryItem));
+      state.products = payload.reverse();
     },
     GET_PAGINATIONS(state, payload) {
       state.paginations = payload;

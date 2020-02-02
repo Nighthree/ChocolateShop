@@ -12,14 +12,13 @@
             style="height: 150px; background-size: cover; background-position: center"
             :style="{backgroundImage: `url(${ item.imageUrl })`}"
           ></div>
-          <div class="card-body">
-            <span class="badge badge-secondary float-right">{{ item.category }}</span>
+          <div class="card-body p-3">
+            <p class="mb-2 badge badge-secondary">{{ item.category }}</p>
             <h5 class="card-title">
               <a href="#" class="text-dark">{{ item.title }}</a>
             </h5>
-            <div class="h5" v-if="!item.price">原價 {{ item.origin_price }} 元</div>
-            <!-- <del class v-if="item.price">原價 {{ item.origin_price }} 元</del> -->
-            <div class="h5 text-right" v-if="item.price">優惠價 {{ item.price }} 元</div>
+            <div class="h6" v-if="!item.price">原價 {{ item.origin_price }} 元</div>
+            <div class="h6 text-right" v-if="item.price">優惠價 {{ item.price }} 元</div>
           </div>
           <div class="card-footer d-flex">
             <button
@@ -53,6 +52,7 @@
       role="dialog"
       aria-labelledby="productModalTitle"
       aria-hidden="true"
+      
     >
       <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">

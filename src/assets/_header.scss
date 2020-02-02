@@ -28,3 +28,10 @@
   color: $yellowChoco;
   background-color: $Choco;
 }
+
+.chocoText.dropdown-toggle::after{
+  display: none;
+}
+// .navbar-light .navbar-nav .chocoText.dropdown-toggle{
+//   font-size: 20px;
+// }
