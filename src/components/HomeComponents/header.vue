@@ -34,17 +34,15 @@
           <li class="nav-item dropdown mx-2">
             <a
               class="nav-link dropdown-toggle rounded-lg chocoText"
-              :class="{'active': cartActive }"
               href="#"
               id="navbarDropdown"
               role="button"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              @click.prevent="cartOnOff()"
             >
               <i class="fas fa-shopping-cart">
-                <span class="badge badge-pill badge-danger">Danger</span>
+                <span class="badge badge-pill badge-danger">{{ cartLength }}</span>
               </i>
             </a>
             <div class="dropdown-menu dropdown-menu-right px-2" aria-labelledby="navbarDropdown">
@@ -58,22 +56,24 @@
                     <th scope="col">金額</th>
                   </tr>
                 </thead>
-                <tr>
-                  <th scope="row">
-                    <i class="far fa-trash-alt"></i>
-                  </th>
-                  <th>金牌西裝</th>
-                  <th>1件</th>
-                  <th>$520</th>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <i class="far fa-trash-alt"></i>
-                  </th>
-                  <th>金牌女裝</th>
-                  <th>1件</th>
-                  <th>$480</th>
-                </tr>
+                <tbody style="font-size:14px">
+                  <tr v-for="item in cart.carts" :key="item.id">
+                    <th scope="row" class="text-danger">
+                      <a href="#" @click.prevent="delCart(item.id)">
+                        <i class="far fa-trash-alt"></i>
+                      </a>
+                    </th>
+                    <td>{{ item.product.title }}</td>
+                    <td>{{ item.qty }}</td>
+                    <td class="text-right">{{ item.total }}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3" class="text-right">總計</td>
+                    <td class="text-right">{{ cart.total }}</td>
+                  </tr>
+                </tfoot>
               </table>
               <a href class="btn btn-primary d-block">結帳去</a>
             </div>
@@ -81,11 +81,6 @@
         </ul>
       </div>
     </nav>
-
-    <div class="text-right my-4">
-      <button class="btn btn-primary" @click.prevent="getCart()">header取得資料</button>
-    </div>
-    <pre>{{  }}</pre>
   </div>
 </template>
 
@@ -93,27 +88,31 @@
 export default {
   data() {
     return {
-      cartActive: false
+      cart: {
+        carts: []
+      }
     };
   },
   methods: {
-    cartOnOff() {
-      const vm = this;
-      vm.cartActive = !vm.cartActive;
-    },
     getCart() {
-      this.$store.dispatch("getCart");
-      console.log(this.cart);
+      this.$store.dispatch("getCartLength");
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
+      this.$http.get(api).then(response => {
+        this.cart = response.data.data;
+      });
     },
+    delCart(id) {
+      this.$store.dispatch("delCart", id);
+    }
   },
   computed: {
-    cart() {
-      return this.$store.state.cart;
+    cartLength() {
+      this.getCart();
+      return this.$store.state.cartLength;
     }
   },
   created() {
-    const vm = this;
-    vm.getCart();
+    this.getCart();
   }
 };
 </script>

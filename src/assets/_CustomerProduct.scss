@@ -1,0 +1,26 @@
+.ulStyle {
+  list-style: none;
+  padding-inline-start: unset;
+}
+.productList{
+  border:2px solid $Choco;
+  box-shadow:2px 2px  $yellowChoco;
+  margin-bottom: 5px;
+  &:hover{
+    border:2px solid $yellowChoco;
+    box-shadow:2px 2px  transparent;
+  }
+  a{
+    color: $Choco;
+    font-weight: 900;
+    &:hover{
+      background-color: $Choco;
+      color: $yellowChoco;
+    }
+    &:active{
+      color: $Choco;
+      background-color: $yellowChoco;
+    }
+  }
+}
+

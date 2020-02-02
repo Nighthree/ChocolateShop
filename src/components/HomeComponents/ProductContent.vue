@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="text-right my-4">
-      <button class="btn btn-primary" @click.prevent="getCart()">取得資料</button>
-    </div>
-    <pre>{{  }}</pre>
+    <!-- <div class="text-right my-4">
+      <button class="btn btn-primary" @click.prevent="">取得資料</button>
+    </div> -->
+    <!-- <pre>{{  }}</pre> -->
     <loading :active.sync="isLoading"></loading>
     <div class="row mt-4">
       <div class="col-md-4 mb-4" v-for="item in products" :key="item.id">
@@ -80,8 +80,8 @@
           <div class="modal-footer">
             <div class="text-muted text-nowrap mr-3">
               小計
-              <strong v-if="product.num == Number"> {{ product.num * product.price }} </strong>
-              <strong v-if="product.num !== Number"></strong>  元
+              <strong v-if="product.num !== ''">{{ product.num * product.price }}</strong>
+              <strong v-if="product.num == ''"></strong> 元
             </div>
             <button type="button" class="btn btn-primary" @click="addCart(product.id, product.num)">
               <i class="fas fa-spinner fa-spin" v-if="addCartLoading == product.id"></i>
@@ -101,68 +101,69 @@ import Pagination from "../BackComponents/Pages/Pagination";
 export default {
   data() {
     return {
-
-        // watchMoreLoading: "",
-
-      // product:{},
+      watchMoreLoading: "",
+      addCartLoading: "",
+      product: {}
     };
   },
   methods: {
     getProducts(page = 1) {
-      this.$store.dispatch('getProducts', page);
+      this.$store.dispatch("getProducts", page);
     },
     addCart(id, qty = 1) {
-      this.$store.dispatch('addCart', {id , qty});
-      $("#productModal").modal("hide");
+      const vm = this;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
+      vm.addCartLoading = id;
+      const cart = {
+        product_id: id,
+        qty : qty,
+      };
+      vm.$http.post(api, { data: cart }).then(response => {
+        $("#productModal").modal("hide");
+        this.$store.dispatch("getCartLength");
+        vm.addCartLoading = "";
+      });
     },
     OpenProductModal(id) {
-      this.$store.dispatch('OpenProductModal', id);
-      $("#productModal").modal("show");
-      // const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/product/${id}`;
-      // vm.watchMoreLoading = id;
-      // vm.$http.get(api).then(response => {
-      //   vm.product = response.data.product;
-      //   $("#productModal").modal("show");
-      //   vm.watchMoreLoading = "";
-      // });
-    },
-    getCart() {
-      this.$store.dispatch('getCart');
-    },
+      const vm = this;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/product/${id}`;
+      vm.watchMoreLoading = id;
+      vm.$http.get(api).then(response => {
+        vm.product = response.data.product;
+        $("#productModal").modal("show");
+        vm.watchMoreLoading = "";
+      });
+    }
   },
-  computed:{
-    isLoading(){
+  computed: {
+    isLoading() {
       return this.$store.state.status.isLoading;
     },
-    products(){
+    products() {
       return this.$store.state.products;
     },
-    categories(){
-      return this.$store.state.status.categories;
-    },
-    paginations(){
+    paginations() {
       return this.$store.state.paginations;
     },
-    addCartLoading(){
-      return this.$store.state.status.addCartLoading;
+    categories() {
+      return this.$store.state.status.categories;
     },
-    watchMoreLoading(){
-      return this.$store.state.status.watchMoreLoading;
-    },
-    product(){
-      return this.$store.state.product;
-    }
-    // cart(){
-    //   return this.$store.state.cart;
+
+    // addCartLoading(){
+    //   return this.$store.state.status.addCartLoading;
+    // },
+    // watchMoreLoading(){
+    //   return this.$store.state.status.watchMoreLoading;
+    // },
+    // product(){
+    //   return this.$store.state.product;
     // }
   },
   components: {
-    Pagination,
+    Pagination
   },
   created() {
     this.getProducts();
-    // vm.getCart();
-  },
-
+  }
 };
 </script>
