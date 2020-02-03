@@ -2,17 +2,20 @@
   <div>
     <HomeHeader></HomeHeader>
     <Products></Products>
+    <HomeFooter></HomeFooter>
   </div>
 </template>
 
 <script>
 import HomeHeader from "./HomeComponents/Header";
-import Products from "./HomeComponents/Products"
+import Products from "./HomeComponents/Products";
+import HomeFooter from "./HomeComponents/HomeFooter"
 
 export default {
   components: {
     HomeHeader,
     Products,
+    HomeFooter
   }
 };
 </script>

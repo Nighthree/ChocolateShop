@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <form class="form-signin" @submit.prevent="singin">
-      <h1 class="h3 mb-3 font-weight-normal">登入後台</h1>
+  <div class="bg-lightChoco">
+<HomeHeader></HomeHeader>
+
+    <form class="form-signin my-5 border bg-white rounded" @submit.prevent="singin">
+      <h1 class="h3 mb-3 font-weight-normal">會員登入</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input
         type="email"
@@ -26,13 +28,18 @@
           <input type="checkbox" value="remember-me" /> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
     </form>
+
+    <HomeFooter></HomeFooter>
   </div>
 </template>
 
 <script>
+import HomeHeader from "./Header";
+import HomeFooter from "./HomeFooter";
+
 export default {
   data() {
     return {
@@ -42,18 +49,9 @@ export default {
       }
     };
   },
-  methods: {
-    singin() {
-      const api = `${process.env.API_PATH}/admin/signin`;
-      const vm = this;
-      vm.$http.post(api, vm.user).then(response => {
-        if (response.data.success) {
-          vm.$router.push("/backstage/productlist");
-        } else {
-          vm.$router.push("/");
-        }
-      });
-    }
+    components: {
+    HomeHeader,
+    HomeFooter
   }
 };
 </script>

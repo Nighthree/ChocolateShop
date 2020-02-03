@@ -7,6 +7,7 @@ import Backstage from '@/components/Backstage';
 import ProductList from '@/components/BackComponents/Pages/ProductList';
 import OrderList from '@/components/BackComponents/Pages/OrderList';
 import CouponList from '@/components/BackComponents/Pages/CouponList';
+import CustomerLogin from '@/components/HomeComponents/CustomerLogin';
 
 
 
@@ -23,6 +24,11 @@ export default new VueRouter({
       path: '/',
       name: 'Home',
       component: Home,
+    },
+    {
+      path: '/customerlogin',
+      name: 'CustomerLogin',
+      component: CustomerLogin,
     },
     {
       path: '/login',

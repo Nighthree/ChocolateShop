@@ -8,10 +8,9 @@
   white-space: nowrap;
   text-indent: 130%;
 }
-
-// $lightChoco
-// $yellowChoco
-// $Choco
+nav{
+  border-bottom: 0;
+}
 .navbar-light .navbar-nav .chocoText {
   color: $Choco;
   font-weight: bold;
@@ -32,6 +31,6 @@
 .chocoText.dropdown-toggle::after{
   display: none;
 }
-// .navbar-light .navbar-nav .chocoText.dropdown-toggle{
-//   font-size: 20px;
-// }
+.carouselPSize{
+  font-size: 12px;
+}

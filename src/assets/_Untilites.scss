@@ -7,3 +7,16 @@
 .w80px {
   width: 80px;
 }
+.bg-cover {
+  background-position: center center;
+  background-size: cover;
+}
+.bg-op6 {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.carousel-height {
+  height: 250px;
+  @media (min-width: 768px) {
+    height: 300px;
+  }
+}

@@ -32,15 +32,58 @@
     color: $Choco;
     background-color: $yellowChoco;
   }
-  &:before{
+  &:before {
     width: 0;
     height: 0;
     border-top: 7.5px solid transparent;
     border-left: 15px solid $yellowChoco;
     border-bottom: 7.5px solid transparent;
-    content: '';
+    content: "";
     position: absolute;
-    top:10.9px;
+    top: 10.9px;
     left: -20px;
+  }
+}
+.cardList {
+  border: 2px solid $yellowChoco;
+  border-radius: 0;
+  box-shadow: 2px 2px 5px $secondary;
+  .card-title:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.cardImgHeight {
+  height: 200px;
+  @media (min-width: 768px) {
+    height: 150px;
+  }
+}
+
+.addCart{
+  padding:10px;
+  border-radius: 50%;
+  border: 1px solid $danger;
+  color: $danger;
+  background-color: $lightChoco;
+  &:hover{
+    border: 1px solid $yellowChoco;
+    color: $lightChoco;
+    background-color: $yellowChoco;
+  }
+}
+
+.modalAddCart{
+  padding:10px;
+  border-radius: 10px;
+  border: 1px solid $danger;
+  color: $danger;
+  background-color: $lightChoco;
+  text-decoration: none;
+  &:hover{
+    border: 1px solid $yellowChoco;
+    color: $lightChoco;
+    background-color: $yellowChoco;
   }
 }

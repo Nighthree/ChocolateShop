@@ -1,15 +1,24 @@
 <template>
-  <div class="bg-lightChoco">
+  <div class="bg-lightChoco py-4 pt-md-5">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <button class="btn btn-primary" @click.prevent>測試的按鈕</button>
           <ul class="ulStyle">
-            <li class="text-center productList active">
-              <a href="#" class="d-block text-decoration-none py-2">全部商品</a>
+            <li class="text-center productList" :class="{ 'active': searchText == ''}">
+              <a
+                href="#"
+                class="d-block text-decoration-none py-2"
+                @click.prevent="getSearchText(item = '')"
+              >全部商品</a>
             </li>
-            <li class="text-center productList" v-for="item in categories" :key="item">
-              <a href="#" class="d-block text-decoration-none py-2">{{ item }}</a>
+            <li
+              class="text-center productList"
+              v-for="item in categories"
+              :key="item"
+              :class="{ 'active': searchText == item }"
+            >
+              <a href="#" class="d-block text-decoration-none py-2"
+              @click.prevent="getSearchText(item)">{{ item }}</a>
             </li>
           </ul>
         </div>
@@ -26,7 +35,8 @@ import ProductContent from "./ProductContent";
 export default {
   data() {
     return {
-      categories: '',
+      categories: "",
+      searchText: ""
     };
   },
   components: {
@@ -41,12 +51,16 @@ export default {
         response.data.products.forEach(function(item) {
           categoryItem.push(item.category);
         });
-        vm.categories = Array.from(new Set(categoryItem)).reverse();
+        vm.categories = Array.from(new Set(categoryItem));
       });
+    },
+    getSearchText(item) {
+      this.searchText = item;
+      this.$store.dispatch("getSearchText", item);
     },
   },
   created() {
     this.getCategories();
-  },
+  }
 };
 </script>
