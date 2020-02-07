@@ -6,6 +6,7 @@
   border: 2px solid $Choco;
   box-shadow: 2px 2px $yellowChoco;
   margin-bottom: 5px;
+  transition: all 0.3s;
   &:hover {
     border: 2px solid $yellowChoco;
     box-shadow: 2px 2px transparent;
@@ -13,6 +14,7 @@
   a {
     color: $Choco;
     font-weight: 900;
+    transition: all 0.3s;
     &:hover {
       background-color: $Choco;
       color: $yellowChoco;
@@ -31,6 +33,7 @@
   a {
     color: $Choco;
     background-color: $yellowChoco;
+    transition: all 0.3s;
   }
   &:before {
     width: 0;
@@ -48,6 +51,7 @@
   border: 2px solid $yellowChoco;
   border-radius: 0;
   box-shadow: 2px 2px 5px $secondary;
+  transition: all 0.3s;
   .card-title:hover{
     text-decoration: underline;
     cursor: pointer;
@@ -59,6 +63,33 @@
   @media (min-width: 768px) {
     height: 150px;
   }
+  .glass{
+    transition: all 0.3s;
+    background-color: rgba(0, 0, 0, 0);
+    height: 200px;
+    @media (min-width: 768px) {
+      height: 150px;
+    }
+    span{
+      color: transparent;
+      transition: all 0.3s;
+      line-height: 200px;
+      font-size: 20px;
+      font-weight: bold;
+      @media (min-width: 768px) {
+        line-height: 150px;
+      }
+    }
+  }
+  &:hover{
+    text-decoration: none;
+    .glass{
+      background-color: rgba(255, 255, 255, 0.6);
+      span{
+        color: $Choco;
+      }
+    }
+  }
 }
 
 .addCart{
@@ -67,6 +98,10 @@
   border: 1px solid $danger;
   color: $danger;
   background-color: $lightChoco;
+  transition: all 0.3s;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   &:hover{
     border: 1px solid $yellowChoco;
     color: $lightChoco;
@@ -81,9 +116,11 @@
   color: $danger;
   background-color: $lightChoco;
   text-decoration: none;
+  transition: all 0.3s;
   &:hover{
     border: 1px solid $yellowChoco;
     color: $lightChoco;
     background-color: $yellowChoco;
+    text-decoration: none;
   }
 }

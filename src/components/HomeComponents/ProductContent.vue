@@ -1,36 +1,37 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="row mt-4">
-      <div class="col-md-4 mb-4" v-for="item in filterData" :key="item.id">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4" v-for="item in filterData" :key="item.id">
         <div class="card h-100 cardList">
           <a
             href="#"
             class="bg-cover cardImgHeight d-block"
             :style="{backgroundImage: `url(${ item.imageUrl })`}"
             @click.prevent="OpenProductModal(item.id)"
-          ></a>
-          <div class="card-body p-3">
+          >
+            <div class="glass d-flex justify-content-center">
+              <span>{{ item.title }}</span>
+            </div>
+          </a>
+          <div class="card-body p-2 position-relative pb-4">
             <p class="mb-2 badge badge-secondary">{{ item.category }}</p>
             <h5
-              class="card-title font-weight-bold text-dark"
+              class="card-title font-weight-bold text-dark mb-1 text-center"
               @click.prevent="OpenProductModal(item.id)"
             >{{ item.title }}</h5>
-            <div class="d-flex justify-content-between">
-              <div
-                class="h6 priceText font-weight-bold text-danger"
-                v-if="!item.price"
-              >{{ item.origin_price | currency }} 元</div>
-              <div
-                class="h6 priceText font-weight-bold text-danger"
-                v-if="item.price"
-              >{{ item.price | currency }} 元</div>
-
-              <a href="#" title="加入購物車" class="addCart" @click.prevent="addCart(item.id)">
-                <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading == item.id"></i>
-                <i class="fas fa-cart-plus fa-lg" v-if="addCartLoading !== item.id"></i>
-              </a>
-            </div>
+            <div
+              class="h6 font-weight-bold text-danger text-center"
+              v-if="!item.price"
+            >{{ item.origin_price | currency }} 元</div>
+            <div
+              class="h6 font-weight-bold text-danger text-center"
+              v-if="item.price"
+            >{{ item.price | currency }} 元</div>
+            <a href="#" title="加入購物車" class="addCart" @click.prevent="addCart(item.id)">
+              <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading == item.id"></i>
+              <i class="fas fa-cart-plus fa-lg" v-if="addCartLoading !== item.id"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -77,23 +78,22 @@
             <!-- <button type="button" class="btn btn-primary" @click="addCart(product.id, product.num)">
               <i class="fas fa-spinner fa-spin" v-if="addCartLoading == product.id"></i>
               加入購物車
-            </button> -->
+            </button>-->
             <a
-                href="#"
-                title="加入購物車"
-                class="modalAddCart"
-                @click.prevent="addCart(product.id, product.num)"
-              >
-                <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading == product.id"></i>
-                <i class="fas fa-cart-plus fa-lg" v-if="addCartLoading !== product.id"></i>
-                加入購物車
-              </a>
+              href="#"
+              title="加入購物車"
+              class="modalAddCart"
+              @click.prevent="addCart(product.id, product.num)"
+            >
+              <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading == product.id"></i>
+              <i class="fas fa-cart-plus fa-lg" v-if="addCartLoading !== product.id"></i>
+              加入購物車
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -103,8 +103,8 @@ import Pagination from "../BackComponents/Pages/Pagination";
 export default {
   data() {
     return {
-      watchMoreLoading: "",
-      addCartLoading: "",
+      watchMoreLoading: '',
+      addCartLoading: '',
       product: {},
       products: {}
     };

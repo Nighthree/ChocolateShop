@@ -1,0 +1,39 @@
+.btn.checkCoupon {
+  border: 1px solid $Choco;
+  transition: all 0.3s;
+  color: $Choco;
+  &:hover{
+    background-color: $yellowChoco;
+  }
+  &:active{
+    background-color: $Choco;
+    color: $lightChoco;
+  }
+}
+.btn.btnFrom{
+  border: 1px solid $Choco;
+  color: $lightChoco;
+  background-color: $Choco;
+  transition: all 0.3s;
+  &:hover{
+    border: 1px solid $yellowChoco;
+  }
+  &:active{
+    background-color: $yellowChoco;
+    color: $Choco;
+  }
+}
+.btn.btn-pay{
+  border: 1px solid $danger;
+  color: $lightChoco;
+  background-color: $danger;
+  transition: all 0.3s;
+  &:hover{
+    border: 1px solid $yellowChoco;
+    color: $yellowChoco;
+  }
+  &:active{
+    background-color: $yellowChoco;
+    color: $Choco;
+  }
+}

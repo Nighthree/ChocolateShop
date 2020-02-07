@@ -1,37 +1,36 @@
 <template>
   <div class="bg-lightChoco">
-<HomeHeader></HomeHeader>
-
-    <form class="form-signin my-5 border bg-white rounded" @submit.prevent="singin">
-      <h1 class="h3 mb-3 font-weight-normal">會員登入</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input
-        type="email"
-        id="inputEmail"
-        class="form-control"
-        placeholder="Email address"
-        required
-        autofocus
-        v-model="user.username"
-      />
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="inputPassword"
-        class="form-control"
-        placeholder="Password"
-        required
-        v-model="user.password"
-      />
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me" /> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
-    </form>
-
+    <HomeHeader class="nav-border mb-5"></HomeHeader>
+    <div class="minHeight">
+      <form class="form-signin mb-5 border bg-white rounded" @submit.prevent="singin">
+        <h1 class="h3 mb-3 font-weight-normal">會員登入</h1>
+        <label for="inputEmail" class="sr-only">信箱</label>
+        <input
+          type="email"
+          id="inputEmail"
+          class="form-control"
+          placeholder="Email"
+          required
+          autofocus
+          v-model="user.username"
+        />
+        <label for="inputPassword" class="sr-only">密碼</label>
+        <input
+          type="password"
+          id="inputPassword"
+          class="form-control"
+          placeholder="密碼"
+          required
+          v-model="user.password"
+        />
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me" /> 記住我
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+      </form>
+    </div>
     <HomeFooter></HomeFooter>
   </div>
 </template>
@@ -49,7 +48,7 @@ export default {
       }
     };
   },
-    components: {
+  components: {
     HomeHeader,
     HomeFooter
   }

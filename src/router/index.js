@@ -8,7 +8,9 @@ import ProductList from '@/components/BackComponents/Pages/ProductList';
 import OrderList from '@/components/BackComponents/Pages/OrderList';
 import CouponList from '@/components/BackComponents/Pages/CouponList';
 import CustomerLogin from '@/components/HomeComponents/CustomerLogin';
-
+import Cart from '@/components/Cart';
+import Order from '@/components/Order';
+import Checkout from '@/components/Checkout'
 
 
 Vue.use(VueRouter);
@@ -18,7 +20,7 @@ export default new VueRouter({
   routes:[
     {
       path: '*',
-      redirect: '/login',
+      redirect: '/',
     },
     {
       path: '/',
@@ -60,6 +62,20 @@ export default new VueRouter({
         },
 
       ],
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart,
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order,
+    },{
+      path: '/checkout/:orderId',
+      name: 'Checkout',
+      component: Checkout,
     },
   ],
 });

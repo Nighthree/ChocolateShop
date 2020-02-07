@@ -8,13 +8,17 @@
   white-space: nowrap;
   text-indent: 130%;
 }
-nav{
-  border-bottom: 0;
+// nav{
+//   border-bottom: 0;
+// }
+.nav-border{
+  border-bottom: 2px solid $Choco;
 }
 .navbar-light .navbar-nav .chocoText {
   color: $Choco;
   font-weight: bold;
   text-align: center;
+  transition: all 0.3s;
   &:hover {
     background-color: $yellowChoco;
   }
