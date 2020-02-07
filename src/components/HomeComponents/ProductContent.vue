@@ -2,7 +2,7 @@
   <div>
     <loading :active.sync="isLoading"></loading>
     <div class="row">
-      <div class="col-lg-4 col-md-6 mb-4" v-for="item in filterData" :key="item.id">
+      <div class="col-lg-4 col-md-6 col-sm-6 mb-4" v-for="item in filterData" :key="item.id">
         <div class="card h-100 cardList">
           <a
             href="#"
