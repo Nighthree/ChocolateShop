@@ -8,33 +8,31 @@
   white-space: nowrap;
   text-indent: 130%;
 }
-// nav{
-//   border-bottom: 0;
-// }
 .nav-border{
   border-bottom: 2px solid $Choco;
 }
-.navbar-light .navbar-nav .chocoText {
-  color: $Choco;
-  font-weight: bold;
-  text-align: center;
-  transition: all 0.3s;
-  &:hover {
-    background-color: $yellowChoco;
-  }
-  &:active {
-    background-color: $Choco;
-    color: $yellowChoco;
-  }
-}
-.navbar-light .navbar-nav .chocoText.active {
-  color: $yellowChoco;
-  background-color: $Choco;
-}
-
-.chocoText.dropdown-toggle::after{
+.dropdown-toggle::after{
   display: none;
 }
 .carouselPSize{
   font-size: 12px;
+}
+.headerBtn{
+  line-height: 40px;
+  padding: 0 10px;
+  height: 40px;
+  color: $Choco;
+  font-weight: bold;
+  &:hover{
+    text-decoration: none;
+    color: $Choco;
+    background-color: $yellowChoco;
+  }
+  &:active{
+    background-color: $Choco;
+    color: $yellowChoco;
+  }
+}
+.headerBtn.active{
+  background-color: $yellowChoco;
 }

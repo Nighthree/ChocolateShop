@@ -1,6 +1,7 @@
 <template>
   <div class="bg-lightChoco">
     <HomeHeader class="mb-5"></HomeHeader>
+    <loading :active.sync="isLoading"></loading>
     <h3 class="text-center text-Choco">填寫訂購資料</h3>
     <div class="container mb-5">
       <div class="row justify-content-center">
@@ -77,7 +78,7 @@
               ></textarea>
             </div>
             <div class="d-flex justify-content-end">
-              <button type="submit" class="btn btnFrom">送出</button>
+              <button type="submit" class="btn checkBtn">送出</button>
             </div>
             
           </form>
@@ -138,7 +139,10 @@ export default {
   computed: {
     cart() {
       return this.$store.state.cart;
-    }
+    },
+    isLoading() {
+      return this.$store.state.status.isLoading;
+    },
   }
 };
 </script>

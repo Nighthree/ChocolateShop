@@ -21,42 +21,5 @@
   }
 }
 .minHeight{
-  min-height: calc(100vh - (78px + 145.6px + 48px));
-}
-.chocoBtn{
-  display: block;
-  padding: 10px;
-  background-color: $yellowChoco;
-  color: $Choco;
-  font-weight:bold;
-  border: 2px solid $yellowChoco;
-  transition: all 0.3s;
-  &:hover{
-    text-decoration: none;
-    border: 2px solid $Choco;
-    color: $Choco;
-  }
-  &:active{
-    background-color: $Choco;
-    color: $yellowChoco;
-  }
-}
-.checkBtn{
-  display: block;
-  padding: 10px;
-  background-color: $danger;
-  color: $lightChoco;
-  font-weight:bold;
-  border: 2px solid $danger;
-  transition: all 0.3s;
-  &:hover{
-    text-decoration: none;
-    border: 2px solid $yellowChoco;
-    color: $lightChoco;
-  }
-  &:active{
-    background-color: $yellowChoco;
-    color: $Choco;
-    border: 2px solid $danger;
-  }
+  min-height: calc(100vh - (62px + 145.6px + 48px));
 }

@@ -46,7 +46,10 @@ export default new Vuex.Store({
     },
     getSearchText(context, item){
       context.commit('GET_SEARCHTEXT', item);
-    }
+    },
+    pushLoadingStatu(context, payload){
+      context.commit('LOADING', payload);
+    },
   },
   mutations: {
     LOADING(state, statu) {

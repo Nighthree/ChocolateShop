@@ -1,11 +1,12 @@
 <template>
   <div class="bg-lightChoco">
     <HomeHeader class="mb-5"></HomeHeader>
+    <loading :active.sync="isLoading"></loading>
     <div class="minHeight">
       <h3 class="text-center text-Choco mb-3">確認訂購資料</h3>
       <div class="container mb-5">
-        <div class="row">
-          <div class="col-md-6">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
             <table class="table">
               <thead>
                 <th>品名</th>
@@ -27,7 +28,7 @@
               </tfoot>
             </table>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-8">
             <table class="table">
               <tbody>
                 <tr>
@@ -55,10 +56,10 @@
                 </tr>
               </tbody>
             </table>
+            <div class="text-right" v-if="order.is_paid === false">
+              <a class="btn btn-pay" @click.prevent="payOrder">確認付款去</a>
+            </div>
           </div>
-        </div>
-        <div class="text-right" v-if="order.is_paid === false">
-          <a class="btn btn-pay" @click.prevent="payOrder">確認付款去</a>
         </div>
       </div>
     </div>
@@ -88,6 +89,7 @@ export default {
       });
     },
     payOrder() {
+      this.$store.dispatch("pushLoadingStatu", true);
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/pay/${vm.orderId}`;
       vm.$http.post(api).then(response => {
@@ -98,7 +100,13 @@ export default {
           alert(response.data.message);
           vm.getOrder();
         }
+        this.$store.dispatch("pushLoadingStatu", false);
       });
+    }
+  },
+  computed:{
+    isLoading(){
+      return this.$store.state.status.isLoading;
     }
   },
   components: {

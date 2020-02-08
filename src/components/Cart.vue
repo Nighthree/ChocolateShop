@@ -1,6 +1,7 @@
 <template>
   <div class="bg-lightChoco">
     <HomeHeader class="mb-5"></HomeHeader>
+    <loading :active.sync="isLoading"></loading>
     <div class="minHeight">
       <h3 class="text-center text-Choco">確認購物車內容</h3>
       <div class="container mb-5">
@@ -95,7 +96,10 @@ export default {
   computed: {
     cart() {
       return this.$store.state.cart;
-    }
+    },
+    isLoading() {
+      return this.$store.state.status.isLoading;
+    },
   }
 };
 </script>

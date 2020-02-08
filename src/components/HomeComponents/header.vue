@@ -1,47 +1,39 @@
 <template>
   <div class="bg-lightChoco sticky-top nav-border">
-    <nav class="navbar navbar-expand-md navbar-light container">
-      <router-link to="/" class="nav-link text-Choco logo">
-        最愛巧克力
-        <span class="sr-only">(current)</span>
-      </router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- ul 和 購物車 -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-2">
-            <router-link to="/customerlogin" class="nav-link rounded-lg chocoText d-block px-3">
-              會員登入
-              <span class="sr-only">(current)</span>
-            </router-link>
-          </li>
-          <li class="nav-item dropdown mx-2">
-            <a
-              class="nav-link dropdown-toggle rounded-lg chocoText px-4"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i class="fas fa-shopping-cart">
-                <span class="badge badge-pill badge-danger">{{ cartLength }}</span>
-              </i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right px-2" aria-labelledby="navbarDropdown">
+    <div class="container">
+      <nav class="d-flex nav">
+        <router-link to="/" class="text-Choco logo">
+          最愛巧克力
+          <span class="sr-only">(current)</span>
+        </router-link>
+        <div class="ml-auto d-flex align-items-center mr-sm-3 mr-1">
+          <router-link to="/customerlogin" class="headerBtn rounded-lg">
+            會員登入
+            <span class="sr-only">(current)</span>
+          </router-link>
+        </div>
+
+        <div class="dropdown d-flex align-items-center">
+          <a
+            class="dropdown-toggle headerBtn rounded-lg"
+            href="#"
+            type="button"
+            id="Dropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="fas fa-shopping-cart">
+              <span class="badge badge-pill badge-danger">{{ cartLength }}</span>
+            </i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right px-2" aria-labelledby="Dropdown" style="width: 270px">
+            <div v-if="cart.total == 0">
+              <p class="text-center py-3 mb-0">購物車還空空的喔！</p>
+            </div>
+            <div v-if="cart.total !== 0">
               <h6 style="font-size: 12px;">已選擇商品</h6>
-              <table class="table" style="width: 270px">
+              <table class="table" >
                 <thead class="d-none">
                   <tr>
                     <th scope="col">刪除</th>
@@ -69,16 +61,18 @@
                   </tr>
                 </tfoot>
               </table>
-              <router-link to="/Cart" class="btn btn-primary d-block">結帳去</router-link>
             </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
+            <router-link to="/Cart" class="btn btn-primary d-block" v-if="cart.total !== 0">結帳去</router-link>
+          </div>
+        </div>
+      </nav>
+    </div>
   </div>
 </template>
 
 <script>
+import $ from "jquery";
+
 export default {
   methods: {
     getCart() {
