@@ -26,7 +26,7 @@ export default {
       vm.$http.post(api).then(response => {
         if (response.data.success) {
           vm.$router.push("/login");
-          alert("成功登出");
+          alert("成功登出後台");
         }
       });
     }

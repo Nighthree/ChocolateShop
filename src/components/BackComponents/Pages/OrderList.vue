@@ -33,7 +33,7 @@
       </table>
     </div>
 
-    <!-- <Pagination :pagenation="paginations" @changeCurrPage="getOrderList"></Pagination> -->
+    <Pagination :pagenation="paginations" @changeCurrPage="getOrderList"></Pagination>
 
   </div>
 </template>
@@ -58,10 +58,14 @@ export default {
         if (response.data.success) {
           console.log(response.data);
           vm.orders = response.data.orders;
+          vm.paginations = response.data.pagination;
         }
         vm.isLoading = false;
       });
     },
+  },
+  components: {
+    Pagination
   },
   created() {
     this.getOrderList();

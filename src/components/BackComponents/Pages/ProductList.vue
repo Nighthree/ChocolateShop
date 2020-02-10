@@ -258,10 +258,10 @@ export default {
     getProducts(page = 1) {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/products?page=${page}`;
-      vm.$store.state.status.isLoading = true;
-      this.$http.get(api).then(response => {
+      vm.$store.dispatch("pushLoadingStatu", true);
+      vm.$http.get(api).then(response => {
         vm.products = response.data.products;
-        vm.$store.state.status.isLoading = false;
+        vm.$store.dispatch("pushLoadingStatu", false);
         vm.paginations = response.data.pagination;
       });
     },
@@ -317,7 +317,7 @@ export default {
     },
     uploadImg() {
       const vm = this;
-      vm.$store.state.status.isLoading = true;
+      vm.$store.dispatch("pushLoadingStatu", true);
       const uploadFile = vm.$refs.files.files[0];
       const formData = new FormData();
       formData.append("file-to-upload", uploadFile);
@@ -331,10 +331,10 @@ export default {
         .then(response => {
           if (response.data.success) {
             vm.$set(vm.temProduct, "imageUrl", response.data.imageUrl);
-            vm.$store.state.status.isLoading = false;
+            vm.$store.dispatch("pushLoadingStatu", false);
             vm.$bus.$emit("message:push", "圖片上傳成功", "success");
           } else {
-            vm.$store.state.status.isLoading = false;
+            vm.$store.dispatch("pushLoadingStatu", false);
             vm.$bus.$emit("message:push", response.data.message, "danger");
           }
         });

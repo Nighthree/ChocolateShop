@@ -14,8 +14,8 @@
           style="background-image:url(https://images.unsplash.com/photo-1511381939415-e44015466834?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1138&q=80)"
         />
         <div class="carousel-caption d-none d-md-block bg-op6 px-4">
-          <h5>把關品質</h5>
-          <p class="carouselPSize">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <h5>全館 6 折</h5>
+          <p class="carouselPSize">輸入折扣碼 666 即享購物車 6 折優惠</p>
         </div>
       </div>
       <div class="carousel-item">
@@ -26,8 +26,8 @@
           style="background-image:url(https://images.unsplash.com/photo-1542733083-dc82892e0427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1906&q=80)"
         />
         <div class="carousel-caption d-none d-md-block bg-op6 px-4">
-          <h5>堅持手做</h5>
-          <p class="carouselPSize">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h5>全館 6 折</h5>
+          <p class="carouselPSize">輸入折扣碼 666 即享購物車 6 折優惠</p>
         </div>
       </div>
       <div class="carousel-item">
@@ -38,8 +38,8 @@
           style="background-image:url(https://images.unsplash.com/photo-1567017627675-b7415a5c7f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80)"
         />
         <div class="carousel-caption d-none d-md-block bg-op6 px-4">
-          <h5>安心購買</h5>
-          <p class="carouselPSize">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          <h5>全館 6 折</h5>
+          <p class="carouselPSize">輸入折扣碼 666 即享購物車 6 折優惠</p>
         </div>
       </div>
     </div>

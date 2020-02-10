@@ -75,10 +75,6 @@
               <strong v-if="product.num !== ''">{{ product.num * product.price }}</strong>
               <strong v-if="product.num == ''"></strong> 元
             </div>
-            <!-- <button type="button" class="btn btn-primary" @click="addCart(product.id, product.num)">
-              <i class="fas fa-spinner fa-spin" v-if="addCartLoading == product.id"></i>
-              加入購物車
-            </button>-->
             <a
               href="#"
               title="加入購物車"

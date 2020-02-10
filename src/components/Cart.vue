@@ -2,57 +2,97 @@
   <div class="bg-lightChoco">
     <HomeHeader class="mb-5"></HomeHeader>
     <loading :active.sync="isLoading"></loading>
-    <div class="minHeight">
-      <h3 class="text-center text-Choco">確認購物車內容</h3>
-      <div class="container mb-5">
-        <div class="row justify-content-center">
-          <div class="col-sm-10 col-12">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <th></th>
-                  <th>品名</th>
-                  <th>數量</th>
-                  <th>單價</th>
-                </thead>
-                <tbody>
-                  <tr v-for="item in cart.carts" :key="item.id">
-                    <td class="align-middle">
-                      <button
-                        type="button"
-                        class="btn btn-outline-danger btn-sm"
-                        @click.prevent="delCart(item.id)"
-                      >
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                    <td class="align-middle">
-                      {{ item.product.title }}
-                      <div class="text-success" v-if="item.coupon">已套用優惠券</div>
-                    </td>
-                    <td class="align-middle">{{ item.qty }}/{{ item.product.unit }}</td>
-                    <td class="align-middle text-right">{{ item.final_total }}</td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="3" class="text-right">總計</td>
-                    <td class="text-right">{{ cart.total }}</td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-            <div class="input-group mb-3 input-group-sm">
-              <input type="text" class="form-control" placeholder="請輸入優惠碼" v-model="couponCode" />
-              <div class="input-group-append">
-                <a class="btn checkCoupon" @click.prevent="checkCouponCode">套用優惠碼</a>
+
+    <div class="minHeight container px-0">
+
+      <div class="row px-0 mx-0 no-gutters mb-5">
+        <div class="col-md-8 px-3 px-md-0">
+          <h1 class="bg-yellowChoco text-Choco font-weight-bold h4 text-center py-3 mb-0">您的購物車</h1>
+          <div
+            class="d-flex flex-column flex-md-row py-3"
+            v-for="item in cart.carts"
+            :key="item.id"
+          >
+            <div class="d-flex align-items-center flex-grow-1 mb-2 mb-md-0">
+              <div class="flex-grow-1 flex-md-grow-0">
+                <div
+                  class="cart-image bg-cover"
+                  :style="{backgroundImage: `url(${ item.product.imageUrl })`}"
+                ></div>
+              </div>
+
+              <div class="d-flex flex-column flex-md-row flex-md-grow-1 pl-1">
+                <div class="flex-fill text-Choco mb-2 mb-md-0">
+                  <h5 class="mb-0">{{ item.product.title }}</h5>
+                  <h5 class="mb-0">{{ item.product.price | currency }}</h5>
+                </div>
+                <div class="cart-control pr-md-2 pr-0 d-flex align-items-center">
+                  <div class="input-group">
+                    <div class="input-group-append">
+                      <button class="btn btnOutlineYellowChoco font-weight-bold">-</button>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control bg-lightChoco"
+                      :value="item.qty"
+                      maxlength="2"
+                    />
+                    <div class="input-group-append">
+                      <button class="btn btnOutlineYellowChoco rounded-0 font-weight-bold">+</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="d-flex justify-content-between">
-              <router-link to="/" class="chocoBtn rounded-lg">繼續購物</router-link>
-              <router-link to="/Order" class="checkBtn rounded-lg">確認結帳</router-link>
+            <div
+              class="price d-flex justify-content-end align-items-center flex-row-reverse flex-md-row"
+            >
+              <p
+                class="font-weight-bold mb-0 py-2 text-Choco ml-md-0 ml-auto text-center"
+                style="width:50px"
+              >{{ item.product.price * item.qty | currency}}</p>
+              <a class="p-2 btn btnDelet" @click.prevent="delCart(item.id)">
+                <i class="far fa-trash-alt"></i>
+              </a>
             </div>
           </div>
+          <!-- 商品分隔 -->
+
+          <div class="input-group my-3 input-group-sm">
+            <input type="text" class="form-control" placeholder="請輸入優惠碼" v-model="couponCode" />
+            <div class="input-group-append">
+              <a class="btn checkCoupon" @click.prevent="checkCouponCode">套用優惠碼</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 px-3">
+          <div class="cart-bill p-3">
+            <h5 class="font-weight-bold text-center py-3">訂單摘要</h5>
+            <div class="border-white border-bottom mb-3"></div>
+            <div
+              class="h5 d-flex justify-content-between font-weight-bold mb-0 mt-2"
+              v-if="cart.total == cart.final_total"
+            >
+              <span>總計</span>
+              <span>{{ cart.total | currency }}</span>
+            </div>
+            <del
+              class="h5 d-flex justify-content-between font-weight-bold mb-0 mt-2"
+              v-if="cart.total !== cart.final_total"
+            >
+              <span>總計</span>
+              <span>{{ cart.total | currency }}</span>
+            </del>
+            <div
+              class="h5 d-flex justify-content-between font-weight-bold mb-0 mt-2"
+              v-if="cart.total !== cart.final_total"
+            >
+              <span>折扣後</span>
+              <span>{{ cart.final_total | currency }}</span>
+            </div>
+          </div>
+          <router-link to="/Order" class="btn btnChoco btn-lg font-weight-bold rounded-0 mb-5">結帳</router-link>
         </div>
       </div>
     </div>
@@ -79,6 +119,9 @@ export default {
     getCart() {
       this.$store.dispatch("getCart");
     },
+    delCart(id) {
+      this.$store.dispatch("delCart", id);
+    },
     checkCouponCode() {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/coupon`;
@@ -99,7 +142,7 @@ export default {
     },
     isLoading() {
       return this.$store.state.status.isLoading;
-    },
+    }
   }
 };
 </script>

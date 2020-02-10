@@ -11,19 +11,19 @@
               <thead>
                 <th>品名</th>
                 <th>數量</th>
-                <th>單價</th>
+                <th class="text-right">單價</th>
               </thead>
               <tbody>
                 <tr v-for="item in order.products" :key="item.id">
                   <td class="align-middle">{{ item.product.title }}</td>
                   <td class="align-middle">{{ item.qty }}/{{ item.product.unit }}</td>
-                  <td class="align-middle text-right">{{ item.final_total }}</td>
+                  <td class="align-middle text-right">{{ item.final_total | currency }}</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
-                  <td colspan="2" class="text-right">總計</td>
-                  <td class="text-right">{{ order.total }}</td>
+                  <td colspan="2" class="text-right h5 text-danger">總計</td>
+                  <td class="text-right h5 text-danger">{{ order.total | currency }}</td>
                 </tr>
               </tfoot>
             </table>
@@ -63,7 +63,6 @@
         </div>
       </div>
     </div>
-
     <HomeFooter></HomeFooter>
   </div>
 </template>
@@ -81,6 +80,9 @@ export default {
     };
   },
   methods: {
+    getCart() {
+      this.$store.dispatch("getCart");
+    },
     getOrder() {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/order/${vm.orderId}`;
@@ -93,7 +95,6 @@ export default {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/pay/${vm.orderId}`;
       vm.$http.post(api).then(response => {
-        console.log(response.data);
         if (response.data.success) {
           vm.getOrder();
         } else {
@@ -107,7 +108,10 @@ export default {
   computed:{
     isLoading(){
       return this.$store.state.status.isLoading;
-    }
+    },
+    cart() {
+      return this.$store.state.cart;
+    },
   },
   components: {
     HomeHeader,

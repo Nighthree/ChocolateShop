@@ -1,38 +1,136 @@
-.chocoBtn{
+// .chocoBtn{
+//   display: block;
+//   padding: 10px;
+//   background-color: $yellowChoco;
+//   color: $Choco;
+//   font-weight:bold;
+//   border: 2px solid $yellowChoco;
+//   transition: all 0.3s;
+//   &:hover{
+//     text-decoration: none;
+//     border: 2px solid $Choco;
+//     color: $Choco;
+//   }
+//   &:active{
+//     background-color: $Choco;
+//     color: $yellowChoco;
+//   }
+// }
+// .checkBtn{
+//   display: block;
+//   padding: 10px;
+//   background-color: $danger;
+//   color: $lightChoco;
+//   font-weight:bold;
+//   border: 2px solid $danger;
+//   transition: all 0.3s;
+//   &:hover{
+//     text-decoration: none;
+//     border: 2px solid $yellowChoco;
+//     color: $lightChoco;
+//   }
+//   &:active{
+//     background-color: $yellowChoco;
+//     color: $Choco;
+//     border: 2px solid $danger;
+//   }
+// }
+
+// .btn.btnFrom{
+//   border: 1px solid $Choco;
+//   color: $lightChoco;
+//   background-color: $Choco;
+//   transition: all 0.3s;
+//   &:hover{
+//     border: 1px solid $yellowChoco;
+//   }
+//   &:active{
+//     background-color: $yellowChoco;
+//     color: $Choco;
+//   }
+// }
+
+
+.cart-image {
+  height: 110px;
+  min-width: 110px;
+}
+.input-group > .input-group-append > .btn.btnOutlineYellowChoco {
+  width: 45px;
+  height: 45px;
+  border: 1px solid $Choco;
+  color: $Choco;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    width: 30px;
+    height: 30px;
+    line-height: 15px;
+  }
+  &:hover{
+    background-color: $Choco;
+    color: $lightChoco;
+  }
+}
+
+.cart-control > .input-group > .form-control {
+  width: 45px;
+  height: 45px;
+  color: $Choco;
+  text-align: center;
+  flex: 0 1 auto;
+  border-top-color: $Choco;
+  border-bottom-color: $Choco;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.price {
+  @media (max-width: 768px) {
+    border-bottom: 1px solid $Choco;
+    border-top: 1px solid $Choco;
+  }
+}
+
+.btn.btnDelet {
+  color: $danger;
+  border: 1px solid $lightChoco;
+  &:hover {
+    background-color: $danger;
+    color: $lightChoco;
+  }
+  &:active {
+    border: 1px solid $danger;
+    color: $danger;
+    background-color: $lightChoco;
+  }
+}
+.cart-bill {
+  background-color: $Choco;
+  color: $lightChoco;
+}
+.btn.btnChoco {
   display: block;
-  padding: 10px;
+  padding: 10px 0;
   background-color: $yellowChoco;
   color: $Choco;
-  font-weight:bold;
+  font-weight: bold;
   border: 2px solid $yellowChoco;
   transition: all 0.3s;
-  &:hover{
+  &:hover {
     text-decoration: none;
     border: 2px solid $Choco;
     color: $Choco;
   }
-  &:active{
+  &:active {
     background-color: $Choco;
     color: $yellowChoco;
-  }
-}
-.checkBtn{
-  display: block;
-  padding: 10px;
-  background-color: $danger;
-  color: $lightChoco;
-  font-weight:bold;
-  border: 2px solid $danger;
-  transition: all 0.3s;
-  &:hover{
-    text-decoration: none;
-    border: 2px solid $yellowChoco;
-    color: $lightChoco;
-  }
-  &:active{
-    background-color: $yellowChoco;
-    color: $Choco;
-    border: 2px solid $danger;
   }
 }
 .btn.checkCoupon {
@@ -47,19 +145,7 @@
     color: $lightChoco;
   }
 }
-.btn.btnFrom{
-  border: 1px solid $Choco;
-  color: $lightChoco;
-  background-color: $Choco;
-  transition: all 0.3s;
-  &:hover{
-    border: 1px solid $yellowChoco;
-  }
-  &:active{
-    background-color: $yellowChoco;
-    color: $Choco;
-  }
-}
+
 .btn.btn-pay{
   border: 1px solid $danger;
   color: $lightChoco;
