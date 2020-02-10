@@ -10,6 +10,7 @@ Skills | 使用技術
 <ul>
 <li>Vue CLI 2</li>
   <li>VueRouter</li>
+  <li>Vuex</li>
   <li>Webpack</li>
   <li>API</li>
   <li>JavaScript (ES6)</li>
