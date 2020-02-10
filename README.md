@@ -3,6 +3,8 @@
 
 > A Vue.js project
 
+> Only used in Portfolio
+
 Skills | 使用技術
 -----------
 <ul>
