@@ -1,6 +1,35 @@
-# chocolateshop
+# 巧克力電商 ChocolateShop
+> 這是一份以 Vue.js 為框架的前端練習作品，無任何商業用途
 
 > A Vue.js project
+
+> Only used in Portfolio
+
+Skills | 使用技術
+-----------
+<ul>
+<li>Vue CLI 2</li>
+  <li>VueRouter</li>
+  <li>Vuex</li>
+  <li>Webpack</li>
+  <li>API</li>
+  <li>JavaScript (ES6)</li>
+  <li>SASS/SCSS</li>
+  <li>Bootstrap 4</li>
+  <li>RWD</li>
+  <li>jQuery</li>
+  <li>CSS</li>
+  <li>HTML</li>
+</ul>
+
+Plugins | 使用插件
+-----------
+<ul>
+<li>vue-axios https://www.npmjs.com/package/vue-axios </li>
+<li>vue-loading-overlay https://www.npmjs.com/package/vue-loading-overlay</li>
+<li>vee-validate https://logaretm.github.io/vee-validate/</li>
+</ul>
+
 
 ## Build Setup
 
