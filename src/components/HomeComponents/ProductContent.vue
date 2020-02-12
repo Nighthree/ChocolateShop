@@ -66,7 +66,7 @@
               <div class="h4" v-if="product.price">網路優惠價 {{ product.price }} 元</div>
             </div>
             <select name class="form-control mt-3" v-model="product.num">
-              <option :value="num" v-for="num in 10" :key="num">選購 {{num}} {{product.unit}}</option>
+              <option :value="productNum" v-for="productNum in 10" :key="productNum">選購 {{productNum}} {{product.unit}}</option>
             </select>
           </div>
           <div class="modal-footer">
@@ -99,8 +99,7 @@ import Pagination from "../BackComponents/Pages/Pagination";
 export default {
   data() {
     return {
-      watchMoreLoading: '',
-      addCartLoading: '',
+      watchMoreLoading: "",
       product: {},
       products: {}
     };
@@ -114,18 +113,8 @@ export default {
       });
     },
     addCart(id, qty = 1) {
-      const vm = this;
-      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
-      vm.addCartLoading = id;
-      const cart = {
-        product_id: id,
-        qty: qty
-      };
-      vm.$http.post(api, { data: cart }).then(response => {
-        $("#productModal").modal("hide");
-        this.$store.dispatch("getCart");
-        vm.addCartLoading = "";
-      });
+      this.$store.dispatch("addCart", { id, qty });
+      $("#productModal").modal("hide");
     },
     OpenProductModal(id) {
       const vm = this;
@@ -147,6 +136,9 @@ export default {
     },
     categories() {
       return this.$store.state.status.categories;
+    },
+    addCartLoading() {
+      return this.$store.state.status.addCartLoading;
     },
     filterData() {
       const vm = this;

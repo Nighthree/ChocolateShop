@@ -24,16 +24,20 @@
             aria-expanded="false"
           >
             <i class="fas fa-shopping-cart">
-              <span class="badge badge-pill badge-danger">{{ cartLength }}</span>
+              <span class="badge badge-pill badge-danger">{{ cart.carts.length }}</span>
             </i>
           </a>
-          <div class="dropdown-menu dropdown-menu-right px-2" aria-labelledby="Dropdown" style="width: 270px">
+          <div
+            class="dropdown-menu dropdown-menu-right px-2"
+            aria-labelledby="Dropdown"
+            style="width: 280px"
+          >
             <div v-if="cart.total == 0">
               <p class="text-center py-3 mb-0">購物車還空空的喔！</p>
             </div>
             <div v-if="cart.total !== 0">
               <h6 style="font-size: 12px;">已選擇商品</h6>
-              <table class="table" >
+              <table class="table">
                 <thead class="d-none">
                   <tr>
                     <th scope="col">刪除</th>
