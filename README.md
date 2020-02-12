@@ -14,7 +14,7 @@ Skills | 使用技術
   <li>Webpack</li>
   <li>API</li>
   <li>JavaScript (ES6)</li>
-  <li>SASS</li>
+  <li>SASS/SCSS</li>
   <li>Bootstrap 4</li>
   <li>RWD</li>
   <li>jQuery</li>
