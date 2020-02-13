@@ -37,7 +37,6 @@ export default new Vuex.Store({
       axios.get(api).then(response => {
         context.commit('GET_CART', response.data.data);
         context.commit('GET_CARTDATA', response.data.data.carts);
-        
         context.commit('GET_CARTLENGTH', response.data.data.carts.length);
         context.commit('LOADING', false);
       });
