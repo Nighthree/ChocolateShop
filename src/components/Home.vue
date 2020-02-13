@@ -2,7 +2,7 @@
   <div>
     <HomeHeader></HomeHeader>
     <HomeBanner></HomeBanner>
-    <Products></Products>
+    <Products class="homeMinHeight"></Products>
     <HomeFooter></HomeFooter>
   </div>
 </template>
@@ -24,5 +24,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+.homeMinHeight {
+  @media (min-width: 768px) {
+    min-height: calc(100vh - (62px + 145.6px + 300px + 48px));
+  }
+  min-height: calc(100vh - (62px + 145.6px + 250px + 48px));
+}
+</style>
 
 

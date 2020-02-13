@@ -176,7 +176,7 @@ export default {
         b = b[vm.cart.carts.product_id];
         return a - b;
       });
-      console.log("data", cartData);
+      // console.log("data", cartData);
     }
   },
   computed: {

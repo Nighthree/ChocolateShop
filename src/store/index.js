@@ -86,7 +86,7 @@ export default new Vuex.Store({
       state.cartData = payload.sort(function(a, b){
         return a.product_id - b.product_id ;
       });
-      console.log('state.cartData',state.cartData);
+      // console.log('state.cartData',state.cartData);
       
 
       // const data = state.cart.carts;

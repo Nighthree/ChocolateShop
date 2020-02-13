@@ -65,21 +65,21 @@
               <del class="h6" v-if="product.price">原價 {{ product.origin_price }} 元</del>
               <div class="h4" v-if="product.price">網路優惠價 {{ product.price }} 元</div>
             </div>
-            <select name class="form-control mt-3" v-model="product.num">
+            <select name class="form-control mt-3" v-model="product.cartNum">
               <option :value="productNum" v-for="productNum in 10" :key="productNum">選購 {{productNum}} {{product.unit}}</option>
             </select>
           </div>
           <div class="modal-footer">
             <div class="text-muted text-nowrap mr-3">
               小計
-              <strong v-if="product.num !== ''">{{ product.num * product.price }}</strong>
-              <strong v-if="product.num == ''"></strong> 元
+              <strong v-if="product.cartNum">{{ product.cartNum * product.price }}</strong>
+              <strong v-if="product.cartNum * product.price == NaN"></strong> 元
             </div>
             <a
               href="#"
               title="加入購物車"
               class="modalAddCart"
-              @click.prevent="addCart(product.id, product.num)"
+              @click.prevent="addCart(product.id, product.cartNum)"
             >
               <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading == product.id"></i>
               <i class="fas fa-cart-plus fa-lg" v-if="addCartLoading !== product.id"></i>
@@ -157,6 +157,7 @@ export default {
     Pagination
   },
   created() {
+    this.$store.dispatch("getSearchText", '');
     this.getProducts();
   }
 };
