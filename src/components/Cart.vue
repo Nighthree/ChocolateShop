@@ -101,9 +101,9 @@
         </div>
       </div>
     </div>
-    <div class="text-right my-4">
+    <!-- <div class="text-right my-4">
       <button class="btn btn-primary" @click.prevent="text">測試</button>
-    </div>
+    </div> -->
     <HomeFooter></HomeFooter>
   </div>
 </template>
