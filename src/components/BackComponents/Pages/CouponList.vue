@@ -152,7 +152,6 @@ export default {
   data() {
     return {
       isNew: false,
-      isLoading: false,
       paginations: {},
       coupons: [],
       coupon: {},
@@ -161,6 +160,11 @@ export default {
   },
   components: {
     Pagination
+  },
+  computed: {
+    isLoading() {
+      return this.$store.state.status.isLoading;
+    }
   },
   methods: {
     openCouponModal(isNew, item) {
@@ -217,10 +221,10 @@ export default {
     getCoupon(page = 1) {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/admin/coupons?page=${page}`;
-      vm.isLoading = true;
+      vm.$store.dispatch("pushLoadingStatu", true);
       vm.$http.get(api).then(response => {
         vm.coupons = response.data.coupons;
-        vm.isLoading = false;
+        vm.$store.dispatch("pushLoadingStatu", false);
       });
     }
   },

@@ -20,10 +20,10 @@
             <th>{{ new Date(item.create_at*1000).getFullYear()}} / {{new Date(item.create_at*1000).getMonth() + 1 }} / {{new Date(item.create_at*1000).getDate() }}</th>
             <td>{{ item.user.email }}</td>
             <td>
-              <span
-                v-for="(product, i) in item.products"
-                :key="i"
-              >{{ product.product.title }} {{ product.qty }}/{{ product.product.unit }}<br /></span>
+              <span v-for="(product, i) in item.products" :key="i">
+                {{ product.product.title }} {{ product.qty }}/{{ product.product.unit }}
+                <br />
+              </span>
             </td>
             <td class="text-right">{{ item.total | currency}}</td>
             <td class="text-success text-center" v-if="item.is_paid">完成付款</td>
@@ -34,7 +34,6 @@
     </div>
 
     <Pagination :pagenation="paginations" @changeCurrPage="getOrderList"></Pagination>
-
   </div>
 </template>
 <script>
@@ -44,28 +43,31 @@ import Pagination from "./Pagination";
 export default {
   data() {
     return {
-      isLoading: false,
       paginations: {},
-      orders: [],
+      orders: []
     };
   },
   methods: {
     getOrderList(page = 1) {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/admin/orders?page=${page}`;
-      vm.isLoading = true;
+      vm.$store.dispatch("pushLoadingStatu", true);
       vm.$http.get(api).then(response => {
         if (response.data.success) {
-          console.log(response.data);
           vm.orders = response.data.orders;
           vm.paginations = response.data.pagination;
         }
-        vm.isLoading = false;
+        vm.$store.dispatch("pushLoadingStatu", false);
       });
-    },
+    }
   },
   components: {
     Pagination
+  },
+  computed: {
+    isLoading() {
+      return this.$store.state.status.isLoading;
+    }
   },
   created() {
     this.getOrderList();

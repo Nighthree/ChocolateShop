@@ -37,6 +37,7 @@ export default new Vuex.Store({
       axios.get(api).then(response => {
         context.commit('GET_CART', response.data.data);
         context.commit('GET_CARTDATA', response.data.data.carts);
+        
         context.commit('GET_CARTLENGTH', response.data.data.carts.length);
         context.commit('LOADING', false);
       });
@@ -86,7 +87,8 @@ export default new Vuex.Store({
       state.cartData = payload.sort(function(a, b){
         return a.product_id - b.product_id ;
       });
-
+      console.log('state.cartData',state.cartData);
+      
 
       // const data = state.cart.carts;
       // const ID = data.product_id;

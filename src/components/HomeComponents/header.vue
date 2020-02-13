@@ -24,7 +24,7 @@
             aria-expanded="false"
           >
             <i class="fas fa-shopping-cart">
-              <span class="badge badge-pill badge-danger">{{ cart.carts.length }}</span>
+              <span class="badge badge-pill badge-danger">{{ cartLength }}</span>
             </i>
           </a>
           <div
