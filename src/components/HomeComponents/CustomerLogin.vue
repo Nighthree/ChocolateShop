@@ -28,7 +28,7 @@
             <input type="checkbox" value="remember-me" /> 記住我
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+        <button class="btn btn-lg btnChoco btn-block" type="submit">登入</button>
       </form>
     </div>
     <HomeFooter></HomeFooter>

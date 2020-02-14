@@ -103,7 +103,7 @@ export default {
     return {
       watchMoreLoading: "",
       product: {},
-      products: {},
+      products: [],
       num: "1"
     };
   },

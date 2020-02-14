@@ -47,21 +47,21 @@
                   </tr>
                 </thead>
                 <tbody style="font-size:14px">
-                  <tr v-for="item in cart.carts" :key="item.id">
-                    <th scope="row">
-                      <a href="#" @click.prevent="delCart(item.id)">
+                  <tr  v-for="item in cart.carts" :key="item.id">
+                    <th class="px-1" scope="row">
+                      <a class="d-block text-center" href="#" @click.prevent="delCart(item.id)">
                         <i class="far fa-trash-alt text-danger"></i>
                       </a>
                     </th>
-                    <td>{{ item.product.title }}</td>
-                    <td class="text-right">{{ item.qty }} {{item.product.unit}}</td>
-                    <td class="text-right">{{ item.total | currency }}</td>
+                    <td class="px-1">{{ item.product.title }}</td>
+                    <td class="text-right px-1">{{ item.qty }} {{item.product.unit}}</td>
+                    <td class="text-right px-1">{{ item.total | currency }}</td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td colspan="3" class="text-right">總計</td>
-                    <td class="text-right">{{ cart.total | currency }}</td>
+                    <td colspan="3" class="text-right px-1">總計</td>
+                    <td class="text-right px-1">{{ cart.total | currency }}</td>
                   </tr>
                 </tfoot>
               </table>

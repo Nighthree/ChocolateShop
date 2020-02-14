@@ -81,19 +81,8 @@ export default new Vuex.Store({
     },
     GET_CARTDATA(state, payload) {
       state.cartData = payload.sort(function (a, b) {
-        return a.product.title - b.product.title;
+        return a.qty- b.qty;
       });
-      console.log('state.cartData',state.cartData);
-
-
-      // const data = state.cart.carts;
-      // const ID = data.product_id;
-      // const cartsData = data.sort(function (a, b) {
-      //   a = a[ID];
-      //   b = b[ID];
-      //   return a - b;
-      // });
-      // state.cartData = cartsData;
     },
     GET_SEARCHTEXT(state, payload) {
       state.status.searchTextItem = payload;

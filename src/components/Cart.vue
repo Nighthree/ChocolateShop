@@ -9,7 +9,7 @@
           <h1 class="bg-yellowChoco text-Choco font-weight-bold h4 text-center py-3 mb-0">您的購物車</h1>
           <div
             class="d-flex flex-column flex-md-row py-3"
-            v-for="item in cart.carts"
+            v-for="item in cartData"
             :key="item.id"
           >
             <div class="d-flex align-items-center flex-grow-1 mb-2 mb-md-0">
@@ -101,9 +101,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="text-right my-4">
-      <button class="btn btn-primary" @click.prevent="text">測試</button>
-    </div> -->
     <HomeFooter></HomeFooter>
   </div>
 </template>
@@ -168,16 +165,7 @@ export default {
             vm.$store.dispatch("pushLoadingStatu", false);
           })
         );
-    },
-    // text() {
-    //   const vm = this;
-    //   const cartData = vm.cart.carts.sort(function(a, b) {
-    //     a = a[vm.cart.carts.product_id];
-    //     b = b[vm.cart.carts.product_id];
-    //     return b - a;
-    //   });
-    //   console.log("data", cartData);
-    // }
+    }
   },
   computed: {
     cart() {
@@ -185,7 +173,10 @@ export default {
     },
     isLoading() {
       return this.$store.state.status.isLoading;
+    },
+    cartData() {
+      return this.$store.state.cartData;
     }
-  },
+  }
 };
 </script>
