@@ -169,25 +169,20 @@ export default {
           })
         );
     },
-    text() {
-      const vm = this;
-      const cartData = vm.cart.carts.sort(function(a, b) {
-        a = a[vm.cart.carts.product_id];
-        b = b[vm.cart.carts.product_id];
-        return a - b;
-      });
-      // console.log("data", cartData);
-    }
+    // text() {
+    //   const vm = this;
+    //   const cartData = vm.cart.carts.sort(function(a, b) {
+    //     a = a[vm.cart.carts.product_id];
+    //     b = b[vm.cart.carts.product_id];
+    //     return b - a;
+    //   });
+    //   console.log("data", cartData);
+    // }
   },
   computed: {
     cart() {
       return this.$store.state.cart;
     },
-    // Data() {
-    //   const vm = this;
-    //   const cartData = vm.$store.state.cart.carts;
-    //   console.log("data", cartData);
-    // },
     isLoading() {
       return this.$store.state.status.isLoading;
     }

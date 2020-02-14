@@ -24,13 +24,13 @@
             aria-expanded="false"
           >
             <i class="fas fa-shopping-cart">
-              <span class="badge badge-pill badge-danger">{{ cartLength }}</span>
+              <span class="badge badge-pill badge-danger">{{ cart.carts.length }}</span>
             </i>
           </a>
           <div
             class="dropdown-menu dropdown-menu-right px-2"
             aria-labelledby="Dropdown"
-            style="width: 280px"
+            style="width: 300px"
           >
             <div v-if="cart.total == 0">
               <p class="text-center py-3 mb-0">購物車還空空的喔！</p>
@@ -54,19 +54,19 @@
                       </a>
                     </th>
                     <td>{{ item.product.title }}</td>
-                    <td>{{ item.qty }}</td>
-                    <td class="text-right">{{ item.total }}</td>
+                    <td class="text-right">{{ item.qty }} {{item.product.unit}}</td>
+                    <td class="text-right">{{ item.total | currency }}</td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr>
                     <td colspan="3" class="text-right">總計</td>
-                    <td class="text-right">{{ cart.total }}</td>
+                    <td class="text-right">{{ cart.total | currency }}</td>
                   </tr>
                 </tfoot>
               </table>
             </div>
-            <router-link to="/Cart" class="btn btn-primary d-block" v-if="cart.total !== 0">結帳去</router-link>
+            <router-link to="/Cart" class="btn btnChoco d-block" v-if="cart.total !== 0">結帳去</router-link>
           </div>
         </div>
       </nav>
@@ -90,9 +90,6 @@ export default {
     cart() {
       return this.$store.state.cart;
     },
-    cartLength() {
-      return this.$store.state.status.cartLength;
-    }
   },
   created() {
     this.getCart();

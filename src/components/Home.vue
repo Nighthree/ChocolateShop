@@ -27,9 +27,9 @@ export default {
 <style lang="scss" scoped>
 .homeMinHeight {
   @media (min-width: 768px) {
-    min-height: calc(100vh - (62px + 145.6px + 300px + 48px));
+    min-height: calc(100vh - (62px + 145.6px + 300px));
   }
-  min-height: calc(100vh - (62px + 145.6px + 250px + 48px));
+  min-height: calc(100vh - (62px + 145.6px + 250px));
 }
 </style>
 

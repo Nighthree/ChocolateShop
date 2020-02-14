@@ -12,13 +12,14 @@ export default new Vuex.Store({
     status: {
       isLoading: false,
       categories: [],
-      cartLength: '',
       searchTextItem: '',
       addCartLoading: '',
     },
     products: [],
     paginations: {},
-    cart: [],
+    cart: {
+      carts: [],
+    },
     cartData: [],
   },
   actions: {
@@ -37,7 +38,6 @@ export default new Vuex.Store({
       axios.get(api).then(response => {
         context.commit('GET_CART', response.data.data);
         context.commit('GET_CARTDATA', response.data.data.carts);
-        context.commit('GET_CARTLENGTH', response.data.data.carts.length);
         context.commit('LOADING', false);
       });
     },
@@ -76,18 +76,15 @@ export default new Vuex.Store({
     GET_PAGINATIONS(state, payload) {
       state.paginations = payload;
     },
-    GET_CARTLENGTH(state, payload) {
-      state.status.cartLength = payload;
-    },
     GET_CART(state, payload) {
       state.cart = payload;
     },
     GET_CARTDATA(state, payload) {
-      state.cartData = payload.sort(function(a, b){
-        return a.product_id - b.product_id ;
+      state.cartData = payload.sort(function (a, b) {
+        return a.product.title - b.product.title;
       });
-      // console.log('state.cartData',state.cartData);
-      
+      console.log('state.cartData',state.cartData);
+
 
       // const data = state.cart.carts;
       // const ID = data.product_id;

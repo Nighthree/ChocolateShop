@@ -16,7 +16,7 @@
               <tbody>
                 <tr v-for="item in order.products" :key="item.id">
                   <td class="align-middle">{{ item.product.title }}</td>
-                  <td class="align-middle">{{ item.qty }}/{{ item.product.unit }}</td>
+                  <td class="align-middle text-right">{{ item.qty }} {{ item.product.unit }}</td>
                   <td class="align-middle text-right">{{ item.final_total | currency }}</td>
                 </tr>
               </tbody>
