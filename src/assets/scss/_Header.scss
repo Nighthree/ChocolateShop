@@ -8,31 +8,26 @@
   white-space: nowrap;
   text-indent: 130%;
 }
-.nav-border{
+.nav-border {
   border-bottom: 2px solid $Choco;
 }
-.dropdown-toggle::after{
+.dropdown-toggle::after {
   display: none;
 }
-.carouselPSize{
+.carouselPSize {
   font-size: 12px;
 }
-.headerBtn{
+.headerBtn {
   line-height: 40px;
   padding: 0 10px;
   height: 40px;
   color: $Choco;
   font-weight: bold;
-  &:hover{
+  &:hover {
     text-decoration: none;
-    color: $Choco;
-    background-color: $yellowChoco;
-  }
-  &:active{
-    background-color: $Choco;
     color: $yellowChoco;
   }
 }
-.headerBtn.active{
-  background-color: $yellowChoco;
+.headerBtn.active {
+  color: $yellowChoco;
 }

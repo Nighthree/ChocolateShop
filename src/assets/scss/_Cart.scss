@@ -1,0 +1,25 @@
+.fixedCart {
+  position: fixed;
+  top: 92vh;
+  right: 1%;
+  z-index: 1;
+}
+.btnCart{
+  color: $Choco;
+  padding: 10px;
+  border: 1px solid $Choco;
+  border-radius: 50%;
+  position: relative;
+  text-align: center;
+  background-color: $white;
+  transition: all 0.3s;
+  &:hover{
+    color: $yellowChoco;
+    background-color: $Choco;
+  }
+  .badge{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+  }
+}

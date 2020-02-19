@@ -152,7 +152,7 @@ export default {
         });
         return categoryData;
       }
-    }
+    },
   },
   created() {
     this.$store.dispatch("getSearchText", "");

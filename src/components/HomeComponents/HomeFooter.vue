@@ -8,7 +8,7 @@
           </a>
         </li>
         <li class="list-group-item border-0 h4 bg-yellowChoco">
-          <a href="#" class="text-Choco">
+          <a href="https://github.com/Nighthree/ChocolateShop" class="text-Choco">
             <i class="fab fa-github-square"></i>
           </a>
         </li>

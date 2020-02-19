@@ -10,13 +10,12 @@ export default new Vuex.Store({
   strict: true,
   state: {
     status: {
-      isLoading: false,
-      categories: [],
+      isLoading: false, //有用到
+      categories: [], //有用到
       searchTextItem: '',
       addCartLoading: '',
     },
     products: [],
-    paginations: {},
     cart: {
       carts: [],
     },
@@ -24,14 +23,19 @@ export default new Vuex.Store({
   },
   actions: {
     getProducts(context, page) {
-      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/products?page=${page}`;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/products/all`;
       context.commit('LOADING', true);
       axios.get(api).then(response => {
         context.commit('GET_PRODUCTS', response.data.products);
-        context.commit('GET_PAGINATIONS', response.data.pagination);
+        context.commit('GET_CATEGORIES', response.data.products);
         context.commit('LOADING', false);
       });
     },
+    getSearchText(context, item) {
+      context.commit('GET_SEARCHTEXT', item);
+    },
+
+
     getCart(context, payload) {
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
       context.commit('LOADING', true);
@@ -59,9 +63,7 @@ export default new Vuex.Store({
         context.dispatch('getCart');
       });
     },
-    getSearchText(context, item) {
-      context.commit('GET_SEARCHTEXT', item);
-    },
+    
     pushLoadingStatu(context, payload) {
       context.commit('LOADING', payload);
     },
@@ -73,9 +75,16 @@ export default new Vuex.Store({
     GET_PRODUCTS(state, payload) {
       state.products = payload.reverse();
     },
-    GET_PAGINATIONS(state, payload) {
-      state.paginations = payload;
+    GET_CATEGORIES(state, payload){
+      const categoryItem = [];
+      payload.forEach(function(item){
+        categoryItem.push(item.category);
+      });
+      state.status.categories =  Array.from(new Set(categoryItem));
     },
+
+
+
     GET_CART(state, payload) {
       state.cart = payload;
     },
@@ -84,6 +93,7 @@ export default new Vuex.Store({
         return a.qty- b.qty;
       });
     },
+
     GET_SEARCHTEXT(state, payload) {
       state.status.searchTextItem = payload;
     },

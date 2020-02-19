@@ -7,7 +7,8 @@ import Backstage from '@/components/Backstage';
 import ProductList from '@/components/BackComponents/Pages/ProductList';
 import OrderList from '@/components/BackComponents/Pages/OrderList';
 import CouponList from '@/components/BackComponents/Pages/CouponList';
-import CustomerLogin from '@/components/HomeComponents/CustomerLogin';
+// import CustomerLogin from '@/components/HomeComponents/CustomerLogin';
+import Products from '@/components/Products';
 import Cart from '@/components/Cart';
 import Order from '@/components/Order';
 import Checkout from '@/components/Checkout'
@@ -28,14 +29,34 @@ export default new VueRouter({
       component: Home,
     },
     {
-      path: '/customerlogin',
-      name: 'CustomerLogin',
-      component: CustomerLogin,
+      path: '/products',
+      name: 'Products',
+      component: Products,
     },
+    // {
+    //   path: '/customerlogin',
+    //   name: 'CustomerLogin',
+    //   component: CustomerLogin,
+    // },
     {
       path: '/login',
       name: 'Login',
       component: Login,
+    },
+        
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart,
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order,
+    },{
+      path: '/checkout/:orderId',
+      name: 'Checkout',
+      component: Checkout,
     },
     {
       path: '/backstage',
@@ -63,19 +84,6 @@ export default new VueRouter({
 
       ],
     },
-    {
-      path: '/cart',
-      name: 'Cart',
-      component: Cart,
-    },
-    {
-      path: '/order',
-      name: 'Order',
-      component: Order,
-    },{
-      path: '/checkout/:orderId',
-      name: 'Checkout',
-      component: Checkout,
-    },
+
   ],
 });
