@@ -37,16 +37,15 @@
                 v-for="item in filterData"
                 :key="item.id"
               >
-                <div class="card cardList">
-                  <a
-                    href="#"
-                    class="bg-cover cardImgHeight d-block"
+                <a class="card cardList" @click.stop.prevent="createProduct(item.id)">
+                  <div
+                    class="bg-cover cardImgHeight"
                     :style="{backgroundImage: `url(${ item.imageUrl })`}"
                   >
                     <div class="glass d-flex justify-content-center">
                       <span>點擊查看更多</span>
                     </div>
-                  </a>
+                  </div>
                   <div class="card-body p-2 position-relative pb-4">
                     <p class="mb-2 badge badge-secondary">{{ item.category }}</p>
                     <h5
@@ -70,7 +69,7 @@
                       <i class="fas fa-cart-plus fa-lg" v-if="addCartLoading !== item.id"></i>
                     </a>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -103,6 +102,9 @@ export default {
     },
     addCart(id, qty = 1) {
       this.$store.dispatch("addCart", { id, qty });
+    },
+    createProduct(id) {
+      this.$router.push(`/product/${id}`);
     }
   },
   computed: {
@@ -132,7 +134,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("getSearchText",'');
+    this.$store.dispatch("getSearchText", "");
     this.getProducts();
   },
   components: {

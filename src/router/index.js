@@ -9,6 +9,7 @@ import OrderList from '@/components/BackComponents/Pages/OrderList';
 import CouponList from '@/components/BackComponents/Pages/CouponList';
 // import CustomerLogin from '@/components/HomeComponents/CustomerLogin';
 import Products from '@/components/Products';
+import Product from '@/components/Product'
 import Cart from '@/components/Cart';
 import Order from '@/components/Order';
 import Checkout from '@/components/Checkout'
@@ -17,8 +18,8 @@ import Checkout from '@/components/Checkout'
 Vue.use(VueRouter);
 
 export default new VueRouter({
-  linkActiveClass:'active',
-  routes:[
+  linkActiveClass: 'active',
+  routes: [
     {
       path: '*',
       redirect: '/',
@@ -33,17 +34,17 @@ export default new VueRouter({
       name: 'Products',
       component: Products,
     },
-    // {
-    //   path: '/customerlogin',
-    //   name: 'CustomerLogin',
-    //   component: CustomerLogin,
-    // },
+    {
+      path: '/product/:productId',
+      name: 'Product',
+      component: Product,
+    },
     {
       path: '/login',
       name: 'Login',
       component: Login,
     },
-        
+
     {
       path: '/cart',
       name: 'Cart',
@@ -53,7 +54,7 @@ export default new VueRouter({
       path: '/order',
       name: 'Order',
       component: Order,
-    },{
+    }, {
       path: '/checkout/:orderId',
       name: 'Checkout',
       component: Checkout,
@@ -62,7 +63,7 @@ export default new VueRouter({
       path: '/backstage',
       name: 'Backstage',
       component: Backstage,
-      children:[
+      children: [
         {
           path: 'productlist',
           name: 'ProductList',

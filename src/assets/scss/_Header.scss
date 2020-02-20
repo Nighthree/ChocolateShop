@@ -31,3 +31,18 @@
 .headerBtn.active {
   color: $yellowChoco;
 }
+
+.scrolltop{
+  position: fixed;
+  top: 94vh;
+  right: 1.5%;
+  width:30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px $secondary;
+  background-color: $white;
+  color: $dark;
+  &:hover{
+    text-decoration: none;
+  }
+}

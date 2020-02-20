@@ -1,0 +1,26 @@
+.bannerHeight {
+  @media (min-width: 768px) {
+    height: 80vh;
+  }
+  height: 250px;
+}
+.goProducts{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: $yellowChoco;
+  border: 2px solid $yellowChoco;
+  background-color: $Choco;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 10px;
+  transition: all 0.3s;
+  transform: translateX(-50%) translateY(-52%);
+  &:hover{
+    text-decoration: none;
+    color: $Choco;
+    border: 2px solid $Choco;
+    background-color: $yellowChoco;
+  }
+}

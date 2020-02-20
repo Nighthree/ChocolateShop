@@ -18,7 +18,7 @@
           </a>
         </li>
       </ul>
-      <p class="text-center text-Choco">© Copright 2020 僅為作品無商業用途</p>
+      <p class="text-center text-Choco">© Copright 2020 僅為作品無任何商業用途</p>
     </footer>
   </div>
 </template>

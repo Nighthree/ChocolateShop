@@ -1,13 +1,14 @@
 .fixedCart {
   position: fixed;
-  top: 92vh;
-  right: 1%;
+  top: 83vh;
+  right: 1.5%;
   z-index: 1;
 }
 .btnCart{
   color: $Choco;
-  padding: 10px;
-  border: 1px solid $Choco;
+  width:60px;
+  height: 60px;
+  box-shadow: 1px 1px 5px $secondary;
   border-radius: 50%;
   position: relative;
   text-align: center;
@@ -16,10 +17,12 @@
   &:hover{
     color: $yellowChoco;
     background-color: $Choco;
+    text-decoration: none;
   }
   .badge{
     position: absolute;
     top: -5px;
     right: -5px;
+    font-size: 14px;
   }
 }

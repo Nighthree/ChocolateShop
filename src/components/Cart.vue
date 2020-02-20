@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-lightChoco">
+  <div>
     <HomeHeader class="mb-5"></HomeHeader>
     <loading :active.sync="isLoading"></loading>
 
@@ -9,7 +9,7 @@
           <h1 class="bg-yellowChoco text-Choco font-weight-bold h4 text-center py-3 mb-0">您的購物車</h1>
           <div
             class="d-flex flex-column flex-md-row py-3"
-            v-for="item in cartData"
+            v-for="item in cart.carts"
             :key="item.id"
           >
             <div class="d-flex align-items-center flex-grow-1 mb-2 mb-md-0">
@@ -35,9 +35,9 @@
                     </div>
                     <input
                       type="text"
-                      class="form-control bg-lightChoco"
+                      class="form-control"
                       :value="item.qty"
-                      maxlength="2"
+                      
                     />
                     <div class="input-group-append">
                       <button
@@ -146,9 +146,9 @@ export default {
       const addAPI = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
       let num;
       if (calc == true) {
-        num = qty + 1;
+        num = parseInt(qty) + 1;
       } else if (calc == false) {
-        num = qty - 1;
+        num = parseInt(qty) - 1;
       }
       const changeCart = {
         product_id: productId,
@@ -177,6 +177,9 @@ export default {
     cartData() {
       return this.$store.state.cartData;
     }
+  },
+  created(){
+    this.getCart();
   }
 };
 </script>

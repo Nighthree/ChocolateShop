@@ -50,21 +50,17 @@
 .cardList {
   border: 2px solid $yellowChoco;
   box-shadow: 2px 2px 5px $secondary;
-}
-
-.cardImgHeight {
-  height: 200px;
-  @media (min-width: 768px) {
-    height: 150px;
-  }
-  .glass{
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  .glass {
     transition: all 0.3s;
     background-color: rgba(0, 0, 0, 0);
     height: 200px;
     @media (min-width: 768px) {
       height: 150px;
     }
-    span{
+    span {
       color: transparent;
       transition: all 0.3s;
       line-height: 200px;
@@ -75,19 +71,26 @@
       }
     }
   }
-  &:hover{
+  &:hover {
     text-decoration: none;
-    .glass{
+    .glass {
       background-color: rgba(255, 255, 255, 0.6);
-      span{
+      span {
         color: $Choco;
       }
     }
   }
 }
 
-.addCart{
-  padding:10px;
+.cardImgHeight {
+  height: 200px;
+  @media (min-width: 768px) {
+    height: 150px;
+  }
+}
+
+.addCart {
+  padding: 10px;
   border-radius: 50%;
   border: 1px solid $danger;
   color: $danger;
@@ -96,10 +99,30 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
-  &:hover{
+  &:hover {
     border: 1px solid $yellowChoco;
     color: $lightChoco;
     background-color: $yellowChoco;
   }
 }
 
+.similarPro {
+  padding: 10px;
+  background-color: $lightChoco;
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.toProducts {
+  padding: 10px 20px;
+  background-color: $lightChoco;
+  border-radius: 5px;
+  &:hover {
+    text-decoration: none;
+  }
+  @media (max-width: 767.98px) {
+    display: block;
+    text-align: center;
+  }
+}

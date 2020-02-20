@@ -14,5 +14,23 @@
         </div>
       </nav>
     </div>
+    <a href="#" @click.prevent="scrollTop" class="scrolltop d-flex justify-content-center align-items-center">
+      <i class="fas fa-arrow-up"></i>
+    </a>
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    scrollTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  },
+  created() {
+    this.scrollTop();
+  }
+};
+</script>

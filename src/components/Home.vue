@@ -6,15 +6,15 @@
     <!-- <Products class="homeMinHeight"></Products> -->
     <section class="py-4 mb-5">
       <div class="container-fuild bg-lightChoco">
-        <div class="row px-3 flex-column-reverse flex-sm-row">
-          <div class="col-12 col-sm-6 pt-md-0 py-3">
+        <div class="row no-gutters">
+          <div class="col-12 col-sm-6">
             <img
               class="img-fluid sectionBreak"
               src="https://s3-ap-northeast-1.amazonaws.com/lacabosse.com.tw/wp-content/uploads/2018/11/OurSupplier1-570x570.jpg"
               alt
             />
           </div>
-          <div class="col-12 col-sm-6 p-lg-5 p-3 d-flex flex-column justify-content-center">
+          <div class="col-12 col-sm-6">
             <div class="d-flex justify-content-center d-sm-block">
               <h4 class="h1 mb-3 text-Choco font-weight-bold">
                 Our

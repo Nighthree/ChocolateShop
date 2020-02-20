@@ -1,0 +1,48 @@
+.product{
+  line-height: 2rem;
+  letter-spacing: 4px;
+  color: $Choco;
+}
+
+.proInfo {
+  border-top: 1px solid $secondary;
+  border-bottom: 1px solid $secondary;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.productInput {
+  width: 70px;
+  height: 46px;
+  font-size: 16px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-bottom: 1px solid $secondary;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+
+}
+
+.btnPro {
+  padding: 10px;
+  width: 130px;
+  border-radius: 10px;
+  border: 1px solid $danger;
+  color: $danger;
+  background-color: $lightChoco;
+  transition: all 0.3s;
+  &:hover {
+    border: 1px solid $yellowChoco;
+    color: $lightChoco;
+    background-color: $yellowChoco;
+  }
+}
+
+.proInputText{
+  line-height: 46px;
+  font-size: 12px;
+}
+.inputDiv{
+  letter-spacing: 0;
+}

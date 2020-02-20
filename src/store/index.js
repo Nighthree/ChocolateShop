@@ -34,20 +34,19 @@ export default new Vuex.Store({
     getSearchText(context, item) {
       context.commit('GET_SEARCHTEXT', item);
     },
-
-
     getCart(context, payload) {
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
       context.commit('LOADING', true);
       axios.get(api).then(response => {
         context.commit('GET_CART', response.data.data);
-        context.commit('GET_CARTDATA', response.data.data.carts);
+        // context.commit('GET_CARTDATA', response.data.data.carts);
         context.commit('LOADING', false);
       });
     },
     addCart(context, { id, qty }) {
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
       context.commit('GET_ADDCARTLOADING', id);
+      context.commit('LOADING', true);
       const cart = {
         product_id: id,
         qty: qty
@@ -55,15 +54,19 @@ export default new Vuex.Store({
       axios.post(api, { data: cart }).then(response => {
         context.dispatch('getCart');
         context.commit('GET_ADDCARTLOADING', '');
+        context.commit('LOADING', false);
+        alert('加入購物車成功');
       });
     },
     delCart(context, id) {
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart/${id}`;
+      context.commit('LOADING', true);
       axios.delete(api).then(response => {
         context.dispatch('getCart');
+        context.commit('LOADING', false);
+        alert('商品刪除成功')
       });
     },
-    
     pushLoadingStatu(context, payload) {
       context.commit('LOADING', payload);
     },
@@ -82,17 +85,14 @@ export default new Vuex.Store({
       });
       state.status.categories =  Array.from(new Set(categoryItem));
     },
-
-
-
     GET_CART(state, payload) {
       state.cart = payload;
     },
-    GET_CARTDATA(state, payload) {
-      state.cartData = payload.sort(function (a, b) {
-        return a.qty- b.qty;
-      });
-    },
+    // GET_CARTDATA(state, payload) {
+    //   state.cartData = payload.sort(function (a, b) {
+    //     return a.qty- b.qty;
+    //   });
+    // },
 
     GET_SEARCHTEXT(state, payload) {
       state.status.searchTextItem = payload;

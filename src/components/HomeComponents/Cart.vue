@@ -2,7 +2,7 @@
   <div class="fixedCart">
     <div class="dropdown d-flex align-items-center">
       <a
-        class="dropdown-toggle btnCart"
+        class="dropdown-toggle btnCart d-flex justify-content-center align-items-center"
         href="#"
         type="button"
         id="Dropdown"
@@ -10,9 +10,8 @@
         aria-haspopup="true"
         aria-expanded="false"
       >
-        <i class="fas fa-shopping-cart fa-lg">
-          <span class="badge badge-pill badge-danger">{{ cart.carts.length }}</span>
-        </i>
+        <i class="fas fa-shopping-cart fa-2x"></i>
+        <span class="badge badge-pill badge-danger">{{ cart.carts.length }}</span>
       </a>
       <div
         class="dropdown-menu dropdown-menu-right px-2"
@@ -66,12 +65,12 @@ export default {
     },
     delCart(id) {
       this.$store.dispatch("delCart", id);
-    },
+    }
   },
-  computed:{
+  computed: {
     cart() {
       return this.$store.state.cart;
-    },
+    }
   },
   created() {
     this.getCart();
