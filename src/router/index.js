@@ -7,10 +7,8 @@ import Backstage from '@/components/Backstage';
 import ProductList from '@/components/BackComponents/Pages/ProductList';
 import OrderList from '@/components/BackComponents/Pages/OrderList';
 import CouponList from '@/components/BackComponents/Pages/CouponList';
-// import CustomerLogin from '@/components/HomeComponents/CustomerLogin';
 import Products from '@/components/Products';
 import Product from '@/components/Product'
-import Cart from '@/components/Cart';
 import Order from '@/components/Order';
 import Checkout from '@/components/Checkout'
 
@@ -44,12 +42,6 @@ export default new VueRouter({
       name: 'Login',
       component: Login,
     },
-
-    {
-      path: '/cart',
-      name: 'Cart',
-      component: Cart,
-    },
     {
       path: '/order',
       name: 'Order',
@@ -82,7 +74,6 @@ export default new VueRouter({
           component: CouponList,
           meta: { requiresAuth: true },
         },
-
       ],
     },
 

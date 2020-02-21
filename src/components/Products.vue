@@ -102,6 +102,7 @@ export default {
     },
     addCart(id, qty = 1) {
       this.$store.dispatch("addCart", { id, qty });
+      this.$bus.$emit("message:push", '新增購物車成功', "success");
     },
     createProduct(id) {
       this.$router.push(`/product/${id}`);

@@ -1,7 +1,4 @@
-.ulStyle {
-  list-style: none;
-  padding-inline-start: unset;
-}
+
 .productList {
   border: 2px solid $Choco;
   box-shadow: 2px 2px $yellowChoco;
@@ -106,23 +103,4 @@
   }
 }
 
-.similarPro {
-  padding: 10px;
-  background-color: $lightChoco;
-  font-weight: bold;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
 
-.toProducts {
-  padding: 10px 20px;
-  background-color: $lightChoco;
-  border-radius: 5px;
-  &:hover {
-    text-decoration: none;
-  }
-  @media (max-width: 767.98px) {
-    display: block;
-    text-align: center;
-  }
-}

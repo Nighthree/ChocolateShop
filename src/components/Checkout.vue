@@ -1,34 +1,55 @@
 <template>
-  <div class="bg-lightChoco">
+  <div>
     <HomeHeader class="mb-5"></HomeHeader>
     <loading :active.sync="isLoading"></loading>
+    <div class="container">
+      <ul class="row ulStyle justify-content-md-around">
+        <li class="col-md-3 col-12 checkStep text-center mb-3">1.填寫訂購資料</li>
+        <li
+          class="col-md-3 col-12 checkStep text-center mb-3"
+          :class="{active :order.is_paid == false}"
+        >2.金流付款</li>
+        <li
+          class="col-md-3 col-12 checkStep text-center mb-3"
+          :class="{active :order.is_paid == true}"
+        >3.完成！</li>
+      </ul>
+    </div>
     <div class="minHeight">
-      <h3 class="text-center text-Choco mb-3">確認訂購資料</h3>
+      <h3 class="text-center text-Choco mb-3">
+        <img
+          src="https://raw.githubusercontent.com/Nighthree/ChocolateShop/master/src/assets/images/chocolate_icon.png"
+          style="height:30px"
+        />確認訂購資料
+      </h3>
       <div class="container mb-5">
         <div class="row justify-content-center">
-          <div class="col-md-8">
-            <table class="table">
+          <div class="col-lg-8 col-md-10 col-12">
+            <table class="table mb-0">
               <thead>
+                <th class="align-middle d-none d-sm-table-cell"></th>
                 <th>品名</th>
                 <th>數量</th>
                 <th class="text-right">單價</th>
               </thead>
               <tbody>
                 <tr v-for="item in order.products" :key="item.id">
+                  <td class="text-center align-middle d-none d-sm-table-cell">
+                    <img :src="item.product.imageUrl" alt style="height:50px;" />
+                  </td>
                   <td class="align-middle">{{ item.product.title }}</td>
                   <td class="align-middle text-right">{{ item.qty }} {{ item.product.unit }}</td>
                   <td class="align-middle text-right">{{ item.final_total | currency }}</td>
                 </tr>
               </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="2" class="text-right h5 text-danger">總計</td>
-                  <td class="text-right h5 text-danger">{{ order.total | currency }}</td>
-                </tr>
-              </tfoot>
             </table>
+            <p class="text-right h5 mb-5">
+              總計：
+              <span class="text-danger h4">{{ order.total | currency }}</span> 元
+            </p>
           </div>
-          <div class="col-md-8">
+
+          <div class="col-lg-8 col-md-10 col-12">
             <table class="table">
               <tbody>
                 <tr>
@@ -56,19 +77,53 @@
                 </tr>
               </tbody>
             </table>
-            <div class="text-right" v-if="order.is_paid === false">
+            <div class="text-right" v-if="!order.is_paid">
               <a class="btn btn-pay" @click.prevent="payOrder">確認付款去</a>
             </div>
+            <router-link
+              to="/products"
+              class="toProducts font-weight-bold text-center mb-3 d-block"
+              v-else
+            >
+              <i class="fas fa-arrow-left"></i> 繼續選購商品
+            </router-link>
           </div>
         </div>
       </div>
     </div>
     <HomeFooter></HomeFooter>
+
+    <!-- 付款成功的Modal -->
+    <div
+      class="modal fade"
+      id="paySuccess"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-success">
+            <h5 class="modal-title font-weight-bold h6" id="paySuccess">付款成功</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body h5">繼續前往商品頁面選購</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary py-2 px-3" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btnChoco py-2 px-3" @click.prevent="goToProducts">前往</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import HomeHeader from "./HomeComponents/Header";
 import HomeFooter from "./HomeComponents/HomeFooter";
+import $ from "jquery";
 
 export default {
   data() {
@@ -97,21 +152,29 @@ export default {
       vm.$http.post(api).then(response => {
         if (response.data.success) {
           vm.getOrder();
+          vm.paySuccess();
         } else {
           alert(response.data.message);
           vm.getOrder();
         }
         this.$store.dispatch("pushLoadingStatu", false);
       });
+    },
+    paySuccess() {
+      $("#paySuccess").modal("show");
+    },
+    goToProducts() {
+      $("#paySuccess").modal("hide");
+      this.$router.push("/products");
     }
   },
-  computed:{
-    isLoading(){
+  computed: {
+    isLoading() {
       return this.$store.state.status.isLoading;
     },
     cart() {
       return this.$store.state.cart;
-    },
+    }
   },
   components: {
     HomeHeader,

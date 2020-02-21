@@ -1,3 +1,15 @@
+.checkStep{
+  padding: 10px;
+  background-color: $lightChoco;
+  border-radius: 30px;
+  color: $secondary;
+}
+.checkStep.active{
+  background-color: $yellowChoco;
+  color: $Choco;
+}
+
+
 .cart-image {
   height: 110px;
   min-width: 110px;

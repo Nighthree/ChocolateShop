@@ -1,136 +1,198 @@
 <template>
-  <div class="bg-lightChoco">
+  <div>
     <HomeHeader class="mb-5"></HomeHeader>
     <loading :active.sync="isLoading"></loading>
+    <div v-if="cart.total == 0 " class="minHeight d-flex justify-content-center align-items-center">
+      <router-link
+        to="/products"
+        class="btn btnChoco rounded p-5"
+        title="回到商品頁面"
+        style="font-size:22px"
+      >
+        購物車還空空的喔！
+        <br />趕快去選購吧！
+      </router-link>
+    </div>
 
-    <!-- 分隔 -->
-
-    <section class="container px-0 px-md-3 mb-5">
-      <div class="row no-gutters">
-        <div class="col-lg-8 px-md-3">
-          <form class="bg-Choco text-lightChoco" @submit.prevent="createCustomOrder">
-            <div class="p-4">
-              <h2 class="h1 text-yellowChoco">運送</h2>
-              <div class="form-row">
-                <div class="form-group col-12">
-                  <label for="email" class="h4">Email</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="請輸入 Email"
-                    v-model="form.user.email"
-                    v-validate="'required|email'"
-                    :class="{'is-invalid': errors.has('email')}"
-                  />
-                  <span class="text-info" v-if="errors.has('email')">{{ errors.first('email') }}</span>
-                </div>
-                <div class="form-group col-12">
-                  <label for="name" class="h4">姓名</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="name"
-                    name="name"
-                    placeholder="請輸入姓名"
-                    v-model="form.user.name"
-                    v-validate="'required'"
-                    :class="{'is-invalid': errors.has('name')}"
-                  />
-                  <span class="text-info" v-if="errors.has('name')">姓名必須輸入正確</span>
-                </div>
-                <div class="form-group col-12">
-                  <label for="telphone" class="h4">電話</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    id="telphone"
-                    name="telphone"
-                    placeholder="請輸入電話"
-                    v-model="form.user.tel"
-                    v-validate="'required'"
-                    :class="{'is-invalid': errors.has('telphone')}"
-                  />
-                  <span class="text-info" v-if="errors.has('telphone')">電話必須輸入正確</span>
-                </div>
-                <div class="form-group col-12">
-                  <label for="address" class="h4">地址</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="address"
-                    name="address"
-                    placeholder="請輸入地址"
-                    v-model="form.user.address"
-                    v-validate="'required'"
-                    :class="{'is-invalid': errors.has('address')}"
-                  />
-                  <span class="text-info" v-if="errors.has('address')">地址必須輸入正確</span>
-                </div>
-                <div class="form-group col-12">
-                  <label for="textarea" class="h4">留言</label>
-                  <textarea
-                    class="form-control"
-                    id="textarea"
-                    name="message"
-                    rows="3"
-                    v-model="form.message"
-                  ></textarea>
-                </div>
-              </div>
+    <div class="minHeight" v-else>
+      <div class="container">
+        <ul class="row ulStyle justify-content-md-around">
+          <li class="col-md-3 col-12 checkStep active text-center mb-3">1.填寫訂購資料</li>
+          <li class="col-md-3 col-12 checkStep text-center mb-3">2.金流付款</li>
+          <li class="col-md-3 col-12 checkStep text-center mb-3">3.完成！</li>
+        </ul>
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10 col-12">
+            <h2 class="text-Choco font-weight-bold h4 text-center py-3 mb-0">
+              <img
+                src="https://raw.githubusercontent.com/Nighthree/ChocolateShop/master/src/assets/images/chocolate_icon.png"
+                style="height:30px"
+              />訂購資訊
+            </h2>
+            <div class="table-responsive">
+              <table class="table table-hover text-Choco">
+                <thead>
+                  <tr>
+                    <th class="text-center d-none d-sm-table-cell"></th>
+                    <th>品項</th>
+                    <th class="text-right">單價</th>
+                    <th class="text-right">數量</th>
+                    <th class="text-right">總計</th>
+                    <th class="text-center">刪除</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in cartData.carts" :key="item.id">
+                    <td class="text-center align-middle d-none d-sm-table-cell">
+                      <a href="#" @click.prevent="createProduct(item.product.id)" title="前往商品介紹">
+                        <img :src="item.product.imageUrl" alt style="height:50px;" />
+                      </a>
+                    </td>
+                    <td class="align-middle">
+                      <a
+                        href="#"
+                        class="text-Choco"
+                        @click.prevent="createProduct(item.product.id)"
+                        title="前往商品介紹"
+                      >{{ item.product.title }}</a>
+                    </td>
+                    <td class="text-right align-middle">{{ item.product.price | currency }}</td>
+                    <td class="text-right align-middle">
+                      <select
+                        v-model="item.qty"
+                        @change="changeQty(item.id, item.product.id, item.qty)"
+                      >
+                        <option :value="num" v-for="num in 10" :key="num">{{ num }}</option>
+                      </select>
+                      {{ item.product.unit }}
+                    </td>
+                    <td
+                      class="text-right align-middle"
+                    >{{ item.qty * item.product.price | currency }}</td>
+                    <td class="text-center align-middle">
+                      <a href="#" class="btn btn-outline-danger" @click.prevent="delCart(item.id)">
+                        <i class="far fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <button type="submit" class="btn btnChoco btn-lg font-weight-bold rounded-0 w-100">下一步</button>
-          </form>
-        </div>
+            <div class="text-right">
+              <p class="h5" v-if="cart.total == cart.final_total">
+                總計：
+                <span class="text-danger">{{ cart.total | currency }}</span> 元
+              </p>
+              <p
+                class="text-secondary"
+                v-if="cart.total !== cart.final_total"
+              >折扣前總計：{{ cart.total | currency }} 元</p>
+              <p class="h5" v-if="cart.final_total !== cart.total">
+                折扣後總計：
+                <span class="text-danger">{{ cart.final_total | currency }}</span> 元
+              </p>
 
-        <div class="col-lg-4 d-none d-lg-block px-md-3">
-          <div class="card text-secondary mb-5">
-            <h3 class="card-header bg-light mb-0 p-3 text-center">訂單摘要</h3>
-            <div class="card-body">
-              <div
-                class="h5 d-flex justify-content-between font-weight-bold mb-0 mt-2"
-                v-if="cart.total == cart.final_total"
-              >
-                <span>總計</span>
-                <span>{{ cart.total | currency }}</span>
+              <div class="input-group my-md-3 mt-3 mb-4 input-group-sm">
+                <input type="text" class="form-control" placeholder="請輸入優惠碼" v-model="couponCode" />
+                <div class="input-group-append">
+                  <a class="btn checkCoupon" @click.prevent="checkCouponCode">套用優惠碼</a>
+                </div>
               </div>
-              <del
-                class="h5 d-flex justify-content-between font-weight-bold mb-0 mt-2"
-                v-if="cart.total !== cart.final_total"
-              >
-                <span>總計</span>
-                <span>{{ cart.total | currency }}</span>
-              </del>
-              <div
-                class="h5 d-flex justify-content-between font-weight-bold mb-0 mt-2"
-                v-if="cart.total !== cart.final_total"
-              >
-                <span>折扣後</span>
-                <span>{{ cart.final_total | currency }}</span>
+              <div class="d-md-flex justify-content-end">
+                <router-link to="/products" class="toProducts font-weight-bold mb-3" title="前往商品頁面">
+                  <i class="fas fa-arrow-left"></i> 繼續選購商品
+                </router-link>
               </div>
             </div>
           </div>
-
-          <div class="card text-secondary">
-            <h3 class="card-header bg-light mb-0 p-3 text-center">購物清單</h3>
-            <div class="card-body pb-0">
-              <div class="d-flex mb-4" v-for="item in cart.carts" :key="item.id">
-                <div
-                  class="cart-image bg-cover"
-                  :style="{backgroundImage: `url(${ item.product.imageUrl })`}"
-                ></div>
-                <div class="align-self-center pl-2">
-                  <span>{{ item.product.title }} ({{item.qty}})</span>
-                  <br />
-                  <span class="h5">{{ item.product.price * item.qty | currency}}</span>
-                </div>
+          <div class="col-lg-8 col-md-10 col-12 text-Choco mb-5">
+            <h2 class="font-weight-bold h4 text-center py-3 mb-0">
+              <img
+                src="https://raw.githubusercontent.com/Nighthree/ChocolateShop/master/src/assets/images/chocolate_icon.png"
+                style="height:30px"
+              />填寫訂購資料
+            </h2>
+            <form class="form-row justify-content-end" @submit.prevent="createCustomOrder">
+              <div class="form-group col-12">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="請輸入 Email"
+                  v-model="form.user.email"
+                  v-validate="'required|email'"
+                  :class="{'is-invalid': errors.has('email')}"
+                />
+                <span class="text-danger" v-if="errors.has('email')">{{ errors.first('email') }}</span>
               </div>
-            </div>
+
+              <div class="form-group col-12">
+                <label for="name">姓名</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  placeholder="請輸入姓名"
+                  v-model="form.user.name"
+                  v-validate="'required'"
+                  :class="{'is-invalid': errors.has('name')}"
+                />
+                <span class="text-danger" v-if="errors.has('name')">姓名必須輸入正確</span>
+              </div>
+
+              <div class="form-group col-12">
+                <label for="telphone">電話</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="telphone"
+                  name="telphone"
+                  placeholder="請輸入電話"
+                  v-model="form.user.tel"
+                  v-validate="'required'"
+                  :class="{'is-invalid': errors.has('telphone')}"
+                />
+                <span class="text-danger" v-if="errors.has('telphone')">電話必須輸入正確</span>
+              </div>
+
+              <div class="form-group col-12">
+                <label for="address">地址</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  name="address"
+                  placeholder="請輸入地址"
+                  v-model="form.user.address"
+                  v-validate="'required'"
+                  :class="{'is-invalid': errors.has('address')}"
+                />
+                <span class="text-danger" v-if="errors.has('address')">地址必須輸入正確</span>
+              </div>
+
+              <div class="form-group col-12">
+                <label for="textarea">留言</label>
+                <textarea
+                  class="form-control"
+                  id="textarea"
+                  name="message"
+                  rows="3"
+                  v-model="form.message"
+                  placeholder="有什麼話想告訴我們？"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btnChoco px-4">建立訂單</button>
+            </form>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+
     <HomeFooter></HomeFooter>
   </div>
 </template>
@@ -142,6 +204,7 @@ import HomeFooter from "./HomeComponents/HomeFooter";
 export default {
   data() {
     return {
+      couponCode: "",
       form: {
         user: {
           name: "",
@@ -161,6 +224,42 @@ export default {
     getCart() {
       this.$store.dispatch("getCart");
     },
+    delCart(id) {
+      this.$store.dispatch("delCart", id);
+    },
+    checkCouponCode() {
+      const vm = this;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/coupon`;
+      vm.$http.post(api, { data: { code: vm.couponCode } }).then(response => {
+        if (response.data.success) {
+          vm.couponCode = vm.cart.carts.coupon;
+          vm.getCart();
+        } else {
+          vm.getCart();
+        }
+      });
+    },
+    changeQty(id, productId, qty) {
+      const vm = this;
+      vm.$store.dispatch("pushLoadingStatu", true);
+      const delAPI = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart/${id}`;
+      const addAPI = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
+      const changeCart = {
+        product_id: productId,
+        qty: qty
+      };
+      vm.$http
+        .all([
+          vm.$http.delete(delAPI),
+          vm.$http.post(addAPI, { data: changeCart })
+        ])
+        .then(
+          vm.$http.spread(function(delResp, addResp) {
+            vm.$store.dispatch("getCart");
+            vm.$store.dispatch("pushLoadingStatu", false);
+          })
+        );
+    },
     createCustomOrder() {
       const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/order`;
@@ -176,6 +275,9 @@ export default {
           alert("欄位不完整");
         }
       });
+    },
+    createProduct(id) {
+      this.$router.push(`/product/${id}`);
     }
   },
   computed: {
@@ -184,7 +286,18 @@ export default {
     },
     isLoading() {
       return this.$store.state.status.isLoading;
+    },
+    cartData() {
+      const data = JSON.parse(JSON.stringify(this.cart));
+      return data;
+      //直接利用option改變數量會使cart的qty被重新賦予
+      //因為從Vuex導過來的數值用直接賦予的方式雖然一樣可以進行但會跳錯
+      //所以重新製造一個一樣的資料
+      //又因為物件傳參考的特性所以要用深層複製的方式
     }
+  },
+  created() {
+    this.getCart();
   }
 };
 </script>

@@ -6,7 +6,7 @@
       <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active">
+      <div class="carousel-item active" style="z-index:0">
         <router-link to="/products" class="goProducts">立刻選購</router-link>
         <img
           src
@@ -14,12 +14,12 @@
           alt
           style="background-image:url(https://vanillaknight.com/media/pics/20200102/1577952582.jpg)"
         />
-        <div class="carousel-caption bg-op6 p-2 px-md-4 py-md-4">
+        <div class="carousel-caption bg-op6 p-2 p-md-4">
           <h5>全館 6 折</h5>
           <p class="carouselPSize mb-2">輸入折扣碼 666 即享購物車 6 折優惠</p>
         </div>
       </div>
-      <div class="carousel-item">
+      <div class="carousel-item" style="z-index:0">
         <router-link to="/products" class="goProducts">立刻選購</router-link>
         <img
           src
@@ -32,7 +32,7 @@
           <p class="carouselPSize mb-2">輸入折扣碼 666 即享購物車 6 折優惠</p>
         </div>
       </div>
-      <div class="carousel-item">
+      <div class="carousel-item" style="z-index:0">
         <router-link to="/products" class="goProducts">立刻選購</router-link>
         <img
           src

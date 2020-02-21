@@ -21,13 +21,9 @@
             </p>
             <div class="d-flex justify-content-end mt-auto inputDiv">
               <label for="productNum" class="proInputText mb-0 text-secondary">數量：</label>
-              <input
-                type="number"
-                id="productNum"
-                v-model="num"
-                class="text-center py-1 mb-0 productInput"
-                maxlength="2"
-              />
+              <select name id="productNum" v-model="num" class="px-3 py-1 mb-0 productInput">
+                <option class="" :value="num" v-for="num in 10" :key="num">{{ num }}</option>
+              </select>
               <a href="#" class="btn btnPro" @click.prevent="addCart(product.id, num)">
                 <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading == product.id"></i>
                 <i class="fas fa-cart-plus fa-lg" v-if="addCartLoading !== product.id"></i>
@@ -45,8 +41,7 @@
 
       <div class="row">
         <div class="col-md-4 col-sm-6 col-12 mb-3" v-for="item in filterProduct" :key="item.id">
-          <router-link :to="{path: `/product/${item.id}`}" class="card cardList" >
-
+          <router-link :to="{path: `/product/${item.id}`}" class="card cardList">
             <div
               class="bg-cover cardImgHeight"
               :style="{backgroundImage: `url(${ item.imageUrl })`}"
@@ -72,14 +67,13 @@
               </a>
             </div>
           </router-link>
-          
-            
-       
         </div>
       </div>
-      <router-link to="/products" class="toProducts font-weight-bold">
-        <i class="fas fa-arrow-left"></i> 回到商品列表
-      </router-link>
+      <div class="d-flex justify-content-end">
+        <router-link to="/products" class="toProducts font-weight-bold">
+          <i class="fas fa-arrow-left"></i> 回到商品列表
+        </router-link>
+      </div>
     </div>
 
     <HomeFooter></HomeFooter>
@@ -111,7 +105,7 @@ export default {
     },
     addCart(id, qty = 1) {
       this.$store.dispatch("addCart", { id, qty });
-    },
+    }
   },
   computed: {
     isLoading() {
@@ -132,7 +126,7 @@ export default {
       //因為indexOf只能判斷單純的陣列
       //所以製造出有同樣排序的只有商品名稱的陣列來判斷
       const filterProTitle = [];
-      filterPro.forEach(function(item){
+      filterPro.forEach(function(item) {
         filterProTitle.push(item.title);
       });
       const key = filterProTitle.indexOf(vm.product.title);
@@ -140,17 +134,17 @@ export default {
       return filterPro;
     }
   },
-  watch:{
-    $route(newUrl, oldUrl){
+  watch: {
+    $route(newUrl, oldUrl) {
       const vm = this;
-      if(newUrl.params.productId !== oldUrl.params.productId){
+      if (newUrl.params.productId !== oldUrl.params.productId) {
         vm.getProduct(newUrl.params.productId);
         window.scrollTo({
           top: 0,
-          behavior: 'smooth'
+          behavior: "smooth"
         });
-      };
-    },
+      }
+    }
   },
   components: {
     HomeHeader,

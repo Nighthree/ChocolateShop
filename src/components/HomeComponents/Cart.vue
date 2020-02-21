@@ -16,7 +16,7 @@
       <div
         class="dropdown-menu dropdown-menu-right px-2"
         aria-labelledby="Dropdown"
-        style="width: 300px"
+        style="width:300px; z-index:20"
       >
         <div v-if="cart.total == 0">
           <p class="text-center py-3 mb-0">購物車還空空的喔！</p>
@@ -52,7 +52,7 @@
             </tfoot>
           </table>
         </div>
-        <router-link to="/Cart" class="btn btnChoco d-block" v-if="cart.total !== 0">結帳去</router-link>
+        <router-link to="/Order" class="btn btnChoco d-block" v-if="cart.total !== 0">結帳去</router-link>
       </div>
     </div>
   </div>
