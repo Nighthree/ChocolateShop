@@ -110,7 +110,10 @@ export default {
     Cart,
     HomeBanner,
     HomeFooter
-  }
+  },
+  created() {
+    this.getProducts();
+  },
 };
 </script>
 
