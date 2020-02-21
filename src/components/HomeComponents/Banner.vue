@@ -15,8 +15,8 @@
           style="background-image:url(https://vanillaknight.com/media/pics/20200102/1577952582.jpg)"
         />
         <div class="carousel-caption bg-op6 p-2 p-md-4">
-          <h5>全館 6 折</h5>
-          <p class="carouselPSize mb-2">輸入折扣碼 666 即享購物車 6 折優惠</p>
+          <h5>全館 8 折</h5>
+          <p class="carouselPSize mb-2">輸入折扣碼 888 即享購物車 8 折優惠</p>
         </div>
       </div>
       <div class="carousel-item" style="z-index:0">

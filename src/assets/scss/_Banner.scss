@@ -5,8 +5,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  color: $yellowChoco;
-  border: 2px solid $yellowChoco;
+  color: $lightChoco;
+  border: 1px solid transparent;
   background-color: $Choco;
   font-size: 20px;
   font-weight: bold;
@@ -17,7 +17,7 @@
   &:hover{
     text-decoration: none;
     color: $Choco;
-    border: 2px solid $Choco;
-    background-color: $yellowChoco;
+    border: 1px solid $Choco;
+    background-color: $lightChoco;
   }
 }

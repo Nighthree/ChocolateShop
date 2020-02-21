@@ -78,7 +78,7 @@
               </tbody>
             </table>
             <div class="text-right" v-if="!order.is_paid">
-              <a class="btn btn-pay">確認付款去</a>
+              <a class="btn btn-pay" @click.prevent="payOrder()">確認付款去</a>
             </div>
             <router-link
               to="/products"
