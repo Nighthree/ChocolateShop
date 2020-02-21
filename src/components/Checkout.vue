@@ -72,13 +72,13 @@
                   <th>付款狀態</th>
                   <td>
                     <span v-if="!order.is_paid">尚未付款</span>
-                    <span v-else class="text-success">付款完成</span>
+                    <span v-else class="text-success" @click="paySuccess"> 付款完成</span>
                   </td>
                 </tr>
               </tbody>
             </table>
             <div class="text-right" v-if="!order.is_paid">
-              <a class="btn btn-pay" @click.prevent="payOrder">確認付款去</a>
+              <a class="btn btn-pay">確認付款去</a>
             </div>
             <router-link
               to="/products"
@@ -104,14 +104,14 @@
     >
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header bg-success">
+          <div class="modal-header alert-success">
             <h5 class="modal-title font-weight-bold h6" id="paySuccess">付款成功</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body h5">繼續前往商品頁面選購</div>
-          <div class="modal-footer">
+          <div class="modal-body h5 text-center">繼續前往商品頁面選購</div>
+          <div class="modal-footer justify-content-center">
             <button type="button" class="btn btn-secondary py-2 px-3" data-dismiss="modal">取消</button>
             <button type="button" class="btn btnChoco py-2 px-3" @click.prevent="goToProducts">前往</button>
           </div>
