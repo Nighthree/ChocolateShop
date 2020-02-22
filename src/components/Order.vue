@@ -57,6 +57,7 @@
                         @click.prevent="createProduct(item.product.id)"
                         title="前往商品介紹"
                       >{{ item.product.title }}</a>
+                      <div class="text-success" v-if="item.coupon">已套用優惠券</div>
                     </td>
                     <td class="text-right align-middle">{{ item.product.price | currency }}</td>
                     <td class="text-right align-middle">
