@@ -3,21 +3,20 @@
 }
 .goProducts{
   position: absolute;
-  top: 50%;
-  left: 50%;
-  color: $lightChoco;
-  border: 1px solid transparent;
-  background-color: $Choco;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 8px 20px;
-  border-radius: 10px;
+  // top: 50%;
+  // left: 50%;
+  // color: $Choco;
+  background-color: rgba($color: #FFF, $alpha: 0.3);
+  // font-size: 20px;
+  // font-weight: bold;
+  width: 100%;
+  height: 100%;
+
   transition: all 0.3s;
-  transform: translateX(-50%) translateY(-52%);
+
   &:hover{
     text-decoration: none;
-    color: $Choco;
-    border: 1px solid $Choco;
-    background-color: $lightChoco;
+    // color: $Choco;
+    background-color: rgba($color: #FFF, $alpha: 0.4);
   }
 }
