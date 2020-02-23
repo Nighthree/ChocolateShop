@@ -1,9 +1,9 @@
 <template>
   <div>
     <HomeHeader></HomeHeader>
+    <loading :active.sync="isLoading"></loading>
     <Cart></Cart>
     <HomeBanner class="mb-3 mb-md-5"></HomeBanner>
-    <!-- <Products class="homeMinHeight"></Products> -->
     <section class="py-4 mb-5 container-fuild">
       <div class="row mx-0 flex-md-row flex-row-reverse">
         <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
@@ -87,6 +87,9 @@ export default {
     },
     createProduct(id) {
       this.$router.push(`/product/${id}`);
+    },
+    addCart(id, qty = 1) {
+      this.$store.dispatch("addCart", { id, qty });
     }
   },
   computed: {
@@ -127,12 +130,6 @@ p.textStyle {
   @media (max-width: 430px) {
     letter-spacing: 2px;
     font-size: 16px;
-  }
-}
-.sectionBreak {
-  @media (min-width: 768px) {
-    margin-top: -20px;
-    margin-bottom: -40px;
   }
 }
 </style>
