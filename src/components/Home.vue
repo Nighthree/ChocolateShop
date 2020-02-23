@@ -54,7 +54,7 @@
                 class="h6 font-weight-bold text-danger text-center"
                 v-if="item.price"
               >{{ item.price | currency }} 元</div>
-              <a href="#" title="加入購物車" class="addCart" @click.stop.prevent="addCart(item.id)">
+              <a href="#" title="加入購物車" class="addCart" @click.stop.prevent="addCart(item.id, 1)">
                 <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading == item.id"></i>
                 <i class="fas fa-cart-plus fa-lg" v-if="addCartLoading !== item.id"></i>
               </a>
