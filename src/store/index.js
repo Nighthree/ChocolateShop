@@ -7,7 +7,7 @@ Vue.use(Vuex);
 const getters = {}
 
 export default new Vuex.Store({
-  strict: true,
+  strict: true, //開啟嚴謹模式
   state: {
     status: {
       isLoading: false, //有用到
@@ -43,7 +43,6 @@ export default new Vuex.Store({
       });
     },
     addCart(context, { id, qty }) {
-      const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
       context.commit('GET_ADDCARTLOADING', id);
       context.commit('LOADING', true);
@@ -59,7 +58,6 @@ export default new Vuex.Store({
       });
     },
     delCart(context, id) {
-      const vm = this;
       const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart/${id}`;
       context.commit('LOADING', true);
       axios.delete(api).then(response => {
@@ -89,12 +87,6 @@ export default new Vuex.Store({
     GET_CART(state, payload) {
       state.cart = payload;
     },
-    // GET_CARTDATA(state, payload) {
-    //   state.cartData = payload.sort(function (a, b) {
-    //     return a.qty- b.qty;
-    //   });
-    // },
-
     GET_SEARCHTEXT(state, payload) {
       state.status.searchTextItem = payload;
     },

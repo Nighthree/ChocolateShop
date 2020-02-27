@@ -9,6 +9,9 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap';
 import VeeValidate from 'vee-validate';
 import zhTwValidate from 'vee-validate/dist/locale/zh_TW';
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 import App from './App';
 import router from './router';
@@ -22,6 +25,7 @@ Vue.use(Vuex);
 Vue.use(VeeValidate);
 VeeValidate.Validator.localize('zh_TW', zhTwValidate);
 
+
 Vue.component('Loading', Loading);
 Vue.filter('currency', currencyFilter);
 
@@ -34,21 +38,24 @@ new Vue({
   template: '<App/>',
   router,
   store,
+  created() {
+    AOS.init({ disable: "phone" });
+  },
 });
 
 router.beforeEach((to, from, next) => {
-  if(to.meta.requiresAuth){
+  if (to.meta.requiresAuth) {
     const api = `${process.env.API_PATH}/api/user/check`;
     axios.post(api).then((response) => {
-      if(response.data.success){
+      if (response.data.success) {
         next();
-      }else{
+      } else {
         next({
-          path:'/login',
+          path: '/login',
         });
       }
     });
-  }else{
+  } else {
     next();
   }
 });

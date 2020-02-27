@@ -3,7 +3,6 @@
     <HomeHeader></HomeHeader>
     <loading :active.sync="isLoading"></loading>
     <Cart></Cart>
-
     <div class="minHeight py-4 pt-md-5 mb-5">
       <div class="container">
         <div class="row">
@@ -102,7 +101,7 @@ export default {
     },
     addCart(id, qty = 1) {
       this.$store.dispatch("addCart", { id, qty });
-      this.$bus.$emit("message:push", '新增購物車成功', "success");
+      this.$bus.$emit("message:push", "新增購物車成功", "success");
     },
     createProduct(id) {
       this.$router.push(`/product/${id}`);
@@ -145,3 +144,4 @@ export default {
   }
 };
 </script>
+

@@ -10,7 +10,10 @@ import CouponList from '@/components/BackComponents/Pages/CouponList';
 import Products from '@/components/Products';
 import Product from '@/components/Product'
 import Order from '@/components/Order';
-import Checkout from '@/components/Checkout'
+import Checkout from '@/components/Checkout';
+import About from '@/components/About';
+import Know from '@/components/Know';
+import Coupon from '@/components/Coupon';
 
 
 Vue.use(VueRouter);
@@ -46,10 +49,26 @@ export default new VueRouter({
       path: '/order',
       name: 'Order',
       component: Order,
-    }, {
+    }, 
+    {
       path: '/checkout/:orderId',
       name: 'Checkout',
       component: Checkout,
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
+    },
+    {
+      path: '/know',
+      name: 'Know',
+      component: Know,
+    },
+    {
+      path: '/coupon',
+      name: 'Coupon',
+      component: Coupon,
     },
     {
       path: '/backstage',

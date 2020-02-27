@@ -1,0 +1,20 @@
+.btn.btnCouBorder {
+  border: 2px solid $Choco;
+  &:hover {
+    background-color: $Choco;
+    color: $yellowChoco;
+  }
+}
+
+.couponMinHeight {
+  min-height: calc(100vh - (62px + 145.6px));
+}
+
+.couponText{
+  width: 90%;
+  height: 40px;
+  margin: 10px 5%;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid $Choco;
+}

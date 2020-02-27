@@ -21,3 +21,43 @@
   list-style: none;
   padding-inline-start: unset;
 }
+.textStyle {
+  line-height: 1.5;
+  letter-spacing: 5px;
+}
+p.textStyle {
+  @media (max-width: 430px) {
+    letter-spacing: 2px;
+    font-size: 16px;
+  }
+}
+.chocoline{
+  position: relative;
+}
+.chocoline::before{
+  content: '';
+  position: absolute;
+  top:-20px;
+  width: 80px;
+  height: 5px;
+  border-top: 1px solid $yellowChoco;
+  border-bottom: 1px solid $yellowChoco ;
+}
+.btn.btnChoco {
+  display: block;
+  padding: 10px 0;
+  background-color: $yellowChoco;
+  color: $Choco;
+  font-weight: bold;
+  border: 2px solid $yellowChoco;
+  transition: all 0.3s;
+  &:hover {
+    text-decoration: none;
+    border: 2px solid $Choco;
+    color: $Choco;
+  }
+  &:active {
+    background-color: $Choco;
+    color: $yellowChoco;
+  }
+}
