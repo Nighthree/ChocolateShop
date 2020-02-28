@@ -4,7 +4,7 @@
 
     <section class="container py-5 textStyle">
       <div class="row justify-content-center">
-        <div class="col-md-9 col-12 mb-4" data-aos="fade-up" data-aos-duration="800">
+        <div class="col-md-9 col-12 mb-4" data-aos="fade-up">
           <div class="card">
             <img src="../assets/images/888.jpg" class="card-img-top" alt />
             <div class="card-body">
@@ -17,7 +17,7 @@
           </div>
         </div>
 
-        <div class="col-md-9 col-12 mb-4" data-aos="fade-up" data-aos-duration="800">
+        <div class="col-md-9 col-12 mb-4" data-aos="fade-up">
           <div class="card">
             <img
               src="https://bnextmedia.s3.hicloud.net.tw/image/album/2019-11/img-1574330638-63274@900.jpg"
@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <div class="col-md-9 col-12 mb-4" data-aos="fade-up" data-aos-duration="800">
+        <div class="col-md-9 col-12 mb-4" data-aos="fade-up">
           <div class="card">
             <img
               src="https://www.natgeomedia.com/wp-content/uploads/2018/11/02-chocolate-domestication-south-america.adapt_.1190.1.jpg"

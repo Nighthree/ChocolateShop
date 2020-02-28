@@ -39,7 +39,10 @@ new Vue({
   router,
   store,
   created() {
-    AOS.init({ disable: "phone" });
+    AOS.init({
+      duration: 600,
+      once: true,
+    });
   },
 });
 

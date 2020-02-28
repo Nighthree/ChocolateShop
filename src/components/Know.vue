@@ -4,7 +4,7 @@
 
     <section class="container py-5 textStyle">
       <h1 class="text-Choco text-center font-weight-bold pb-4">巧克力對身體的益處</h1>
-      <div class="row py-4" data-aos="fade-up" data-aos-duration="800">
+      <div class="row py-4" data-aos="fade-up">
         <div class="col-md-6 col-12">
           <h3 class="text-Choco chocoline mb-4">提升認知能力</h3>
           <p
@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <div class="row flex-row flex-md-row-reverse py-4" data-aos="fade-up" data-aos-duration="800">
+      <div class="row flex-row flex-md-row-reverse py-4" data-aos="fade-up">
         <div class="col-md-6 col-12">
           <h3 class="text-Choco chocoline mb-4">降低心臟病風險</h3>
           <p
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="row py-4" data-aos="fade-up" data-aos-duration="800">
+      <div class="row py-4" data-aos="fade-up">
         <div class="col-md-6 col-12">
           <h3 class="text-Choco chocoline mb-4">降血壓改善血液流動</h3>
           <p
@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <div class="row flex-row flex-md-row-reverse py-4" data-aos="fade-up" data-aos-duration="800">
+      <div class="row flex-row flex-md-row-reverse py-4" data-aos="fade-up">
         <div class="col-md-6 col-12">
           <h3 class="text-Choco chocoline mb-4">提升好的膽固醇</h3>
           <p

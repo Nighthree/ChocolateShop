@@ -4,7 +4,7 @@
     <loading :active.sync="isLoading"></loading>
     <Cart></Cart>
     <div class="container minHeight py-4 pt-md-5 mb-5">
-      <div class="row" data-aos="fade-up" data-aos-duration="800">
+      <div class="row" data-aos="fade-up">
         <div class="col-md-6 col-12 mb-3">
           <img class="img-fluid" :src="product.imageUrl" style="border-radius:10px" />
         </div>
@@ -43,7 +43,7 @@
         <div
           class="col-md-4 col-sm-6 col-12 mb-3"
           data-aos="fade-up"
-          data-aos-duration="800"
+          data-aos-once="true"
           v-for="item in filterProduct"
           :key="item.id"
         >

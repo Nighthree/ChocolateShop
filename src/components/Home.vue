@@ -4,7 +4,7 @@
     <loading :active.sync="isLoading"></loading>
     <Cart></Cart>
     <HomeBanner class="mb-3 mb-md-5"></HomeBanner>
-    <section class="py-4 mb-5 container-fuild" data-aos="fade-up" data-aos-duration="800">
+    <section class="py-4 mb-5 container-fuild" data-aos="fade-up">
       <div class="row mx-0 flex-md-row flex-row-reverse">
         <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
           <div class="d-flex justify-content-center d-sm-block">
@@ -33,7 +33,7 @@
         </div>
       </div>
     </section>
-    <section class="container mb-5" data-aos="fade-up" data-aos-duration="800">
+    <section class="container mb-5" data-aos="fade-up">
       <h4 class="h1 mb-3 text-Choco font-weight-bold textStyle text-center">Our Promises</h4>
       <p class="textStyle h5 text-secondary text-center">
         堅持嚴選最好的巧克力工匠
@@ -97,7 +97,7 @@
       </div>
     </section>
 
-    <section class="container pb-5" data-aos="fade-up" data-aos-duration="800">
+    <section class="container pb-5" data-aos="fade-up">
       <div class="row flex-row flex-md-row-reverse">
         <div class="col-md-6 col-12 d-flex flex-column justify-content-between">
           <h4 class="h1 mb-3 text-Choco font-weight-bold">巧克力的益處</h4>
@@ -121,7 +121,7 @@
       </div>
     </section>
 
-    <section class="container" data-aos="fade-up" data-aos-duration="800">
+    <section class="container" data-aos="fade-up">
       <h3 class="textStyle h1 mb-3 text-Choco font-weight-bold text-center">店長推薦</h3>
       <div class="row">
         <div class="col-md-4 col-12 mb-3" v-for="item in pushProducts" :key="item.id">

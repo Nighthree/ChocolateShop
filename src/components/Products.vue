@@ -34,7 +34,7 @@
               <div
                 class="col-lg-4 col-md-6 col-sm-6 mb-4"
                 data-aos="fade-up"
-                data-aos-duration="800"
+                data-aos-once="true"
                 v-for="item in filterData"
                 :key="item.id"
               >

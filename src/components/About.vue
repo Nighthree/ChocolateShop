@@ -2,12 +2,12 @@
   <div>
     <HomeHeader></HomeHeader>
 
-    <section class="container py-5 textStyle" data-aos="fade-up" data-aos-duration="800">
+    <section class="container py-5 textStyle" data-aos="fade-up">
       <h1 class="mb-5 text-Choco">我們的故事</h1>
       <h5 class="text-secondary chocoline">我們是誰？</h5>
       <p class="text-secondary">我們是喜愛巧克力的她和他。</p>
     </section>
-    <section class="container py-5" data-aos="fade-up" data-aos-duration="800">
+    <section class="container py-5" data-aos="fade-up">
       <div class="row">
         <div class="col-md-6 col-12 textStyle">
           <h5 class="text-secondary chocoline pb-4">她的故事</h5>
@@ -26,7 +26,7 @@
         </div>
       </div>
     </section>
-    <section class="container py-5" data-aos="fade-up" data-aos-duration="800">
+    <section class="container py-5" data-aos="fade-up">
       <div class="row flex-row flex-md-row-reverse">
         <div class="col-md-6 col-12 textStyle">
           <h5 class="text-secondary chocoline pb-4">他的故事</h5>
@@ -47,7 +47,7 @@
         </div>
       </div>
     </section>
-    <section class="container" data-aos="fade-up" data-aos-duration="800">
+    <section class="container" data-aos="fade-up">
       <div class="row justify-content-around">
         <div class="col-md-4 col-12 mb-5">
           <h5 class="text-secondary chocoline pb-4">我們的任務</h5>
@@ -69,7 +69,7 @@
         </div>
       </div>
     </section>
-    <section class="position-relative" data-aos="fade-up" data-aos-duration="800">
+    <section class="position-relative" data-aos="fade-up">
       <img
         class="img-fluid"
         src="https://s3-ap-northeast-1.amazonaws.com/lacabosse.com.tw/wp-content/uploads/2018/11/about-full-img-2.jpg"
