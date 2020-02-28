@@ -2,15 +2,17 @@
   <div>
     <HomeHeader></HomeHeader>
     <section class="couponMinHeight d-flex align-items-center">
-      <div class="position-relative">
-        <img class="img-fluid" src="../assets/images/888.jpg" alt />
-        <a
-          href="#"
-          class="btn btnChoco btnCouBorder px-5 position-absolute"
-          style="bottom:20px;left:50%;transform:translateX(-50%)"
-          data-toggle="modal"
-          data-target="#couponModalCenter"
-        >我要參加！</a>
+      <div class="position-relative w-100">
+        <img class="w-100" src="../assets/images/888.jpg" alt />
+        <div class="d-flex justify-content-center py-3 py-md-0">
+          <a
+            href="#"
+            class="btn btnChoco btnCou px-5"
+            data-toggle="modal"
+            data-target="#couponModalCenter"
+            @click.prevent="couponCheck = '' , couponText =''"
+          >我要參加！</a>
+        </div>
       </div>
     </section>
     <HomeFooter></HomeFooter>
@@ -32,17 +34,41 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" v-if="couponCheck === ''">
             <label class="h2 text-center d-block" for="couponText">
               輸入「
               <span class="font-weight-bold text-Choco">最愛巧克力</span>」
-              <br />取得優惠碼
+              <br />兌換優惠碼
             </label>
             <input type="text" v-model="couponText" id="couponText" class="couponText" />
           </div>
+          <div class="modal-body" v-if="couponCheck === '最愛巧克力'">
+            <p class="text-center h5">兌換成功！</p>
+            <p class="text-center h5">
+              恭喜你取得優惠碼「
+              <span class="text-danger h3">{{ couponCode }}</span> 」
+            </p>
+            <p class="text-center h6">享購物車 8 折優惠！</p>
+          </div>
+
+          <div class="modal-body" v-if="couponCheck !== '最愛巧克力' && couponCheck !== ''">
+            <label class="text-center h5 d-block" for="couponTextAgain">
+              兌換失敗！
+              <br />再輸入一次吧！
+              <br />「
+              <span class="font-weight-bold text-Choco">最愛巧克力</span>」
+            </label>
+            <input type="text" v-model="couponText" id="couponTextAgain" class="couponText" />
+          </div>
+
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary py-2 px-3" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btnChoco py-2 px-3" @click.prevent="checkCoupon">取得優惠碼</button>
+            <button type="button" class="btn btn-secondary py-2 px-3" data-dismiss="modal">關閉</button>
+            <button
+              type="button"
+              class="btn btnChoco py-2 px-3"
+              @click.prevent="couponCheck = couponText"
+              v-if="couponCheck !== '最愛巧克力'"
+            >取得優惠碼</button>
           </div>
         </div>
       </div>
@@ -52,26 +78,14 @@
 <script>
 import HomeHeader from "./HomeComponents/Header";
 import HomeFooter from "./HomeComponents/HomeFooter";
-import $ from "jquery";
 
 export default {
   data() {
     return {
       couponText: "",
+      couponCheck: "",
       couponCode: "888"
     };
-  },
-  methods: {
-    checkCoupon() {
-      const vm = this;
-      if (vm.couponText == "最愛巧克力") {
-        $("#couponModalCenter").modal("hide");
-        alert("取得優惠碼：888");
-      } else {
-        $("#couponModalCenter").modal("hide");
-        alert("輸入錯誤");
-      }
-    }
   },
   components: {
     HomeHeader,

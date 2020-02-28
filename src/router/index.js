@@ -14,6 +14,7 @@ import Checkout from '@/components/Checkout';
 import About from '@/components/About';
 import Know from '@/components/Know';
 import Coupon from '@/components/Coupon';
+import News from '@/components/News';
 
 
 Vue.use(VueRouter);
@@ -69,6 +70,11 @@ export default new VueRouter({
       path: '/coupon',
       name: 'Coupon',
       component: Coupon,
+    },
+    {
+      path: '/news',
+      name: 'News',
+      component: News,
     },
     {
       path: '/backstage',

@@ -4,7 +4,7 @@
     <loading :active.sync="isLoading"></loading>
     <Cart></Cart>
     <div class="container minHeight py-4 pt-md-5 mb-5">
-      <div class="row">
+      <div class="row" data-aos="fade-up" data-aos-duration="800">
         <div class="col-md-6 col-12 mb-3">
           <img class="img-fluid" :src="product.imageUrl" style="border-radius:10px" />
         </div>
@@ -22,7 +22,7 @@
             <div class="d-flex justify-content-end mt-auto inputDiv">
               <label for="productNum" class="proInputText mb-0 text-secondary">數量：</label>
               <select name id="productNum" v-model="num" class="px-3 py-1 mb-0 productInput">
-                <option class="" :value="num" v-for="num in 10" :key="num">{{ num }}</option>
+                <option class :value="num" v-for="num in 10" :key="num">{{ num }}</option>
               </select>
               <a href="#" class="btn btnPro" @click.prevent="addCart(product.id, num)">
                 <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading == product.id"></i>
@@ -40,7 +40,13 @@
       </div>
 
       <div class="row">
-        <div class="col-md-4 col-sm-6 col-12 mb-3" v-for="item in filterProduct" :key="item.id">
+        <div
+          class="col-md-4 col-sm-6 col-12 mb-3"
+          data-aos="fade-up"
+          data-aos-duration="800"
+          v-for="item in filterProduct"
+          :key="item.id"
+        >
           <router-link :to="{path: `/product/${item.id}`}" class="card cardList">
             <div
               class="bg-cover cardImgHeight"

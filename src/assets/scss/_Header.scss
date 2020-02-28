@@ -27,6 +27,9 @@
     text-decoration: none;
     color: $yellowChoco;
   }
+  @media (max-width: 767.98px){
+    border-top: 1px solid $Choco;
+  }
 }
 .headerBtn.active {
   color: $yellowChoco;

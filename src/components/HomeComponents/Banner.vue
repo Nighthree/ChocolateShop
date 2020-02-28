@@ -7,7 +7,7 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active" style="z-index:0">
-        <router-link to="/products" class title="立刻選購">
+        <router-link to="/coupon" title="立刻參加">
           <img
             src
             class="d-block w-100 bg-cover bannerHeight"
@@ -15,13 +15,13 @@
             style="background-image:url(https://vanillaknight.com/media/pics/20200102/1577952582.jpg)"
           />
           <div class="carousel-caption bg-op6 p-2 p-md-4">
-            <h5>全館 8 折</h5>
-            <p class="carouselPSize mb-2">輸入折扣碼 888 即享購物車 8 折優惠</p>
+            <h5>開幕慶</h5>
+            <p class="carouselPSize mb-2">參加活動即享購物車 8 折優惠</p>
           </div>
         </router-link>
       </div>
       <div class="carousel-item" style="z-index:0">
-        <router-link to="/products">
+        <router-link to="/coupon" title="立刻參加">
           <img
             src
             class="d-block w-100 bg-cover bannerHeight"
@@ -29,13 +29,13 @@
             style="background-image:url(https://vanillaknight.com/media/pics/20190814/1565775858.jpg)"
           />
           <div class="carousel-caption bg-op6 p-2 px-md-4 py-md-4">
-            <h5>全館 6 折</h5>
-            <p class="carouselPSize mb-2">輸入折扣碼 666 即享購物車 6 折優惠</p>
+            <h5>開幕慶</h5>
+            <p class="carouselPSize mb-2">參加活動即享購物車 8 折優惠</p>
           </div>
         </router-link>
       </div>
       <div class="carousel-item" style="z-index:0">
-        <router-link to="/products">
+        <router-link to="/coupon" title="立刻參加">
           <img
             src
             class="d-block w-100 bg-cover bannerHeight"
@@ -43,8 +43,8 @@
             style="background-image:url(https://vanillaknight.com/shop/pics/20180215/1518667878.jpg)"
           />
           <div class="carousel-caption bg-op6 p-2 px-md-4 py-md-4">
-            <h5>全館 6 折</h5>
-            <p class="carouselPSize mb-2">輸入折扣碼 666 即享購物車 6 折優惠</p>
+            <h5>開幕慶</h5>
+            <p class="carouselPSize mb-2">參加活動即享購物車 8 折優惠</p>
           </div>
         </router-link>
       </div>
