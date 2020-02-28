@@ -101,7 +101,7 @@
                   <a class="btn checkCoupon" @click.prevent="checkCouponCode">套用優惠碼</a>
                 </div>
               </div>
-              <router-link to="/coupon" class="d-block toProducts rounded mb-3 text-center">沒有優惠碼嗎？快去參加活動優惠碼！</router-link>
+              <router-link to="/coupon" class="d-block toProducts rounded mb-3 text-center">沒有優惠碼嗎？點此參加活動取得優惠碼！</router-link>
               <div class="d-md-flex justify-content-end">
                 <router-link to="/products" class="toProducts font-weight-bold mb-3" title="前往商品頁面">
                   <i class="fas fa-arrow-left"></i> 繼續選購商品
