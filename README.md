@@ -6,7 +6,7 @@
 
 > Only used in Portfolio
 
-為轉換使用 Vue Cli 3 版本，已移植至此 [GitHub 連結](https://github.com/Nighthree/ChocolateShop_vue_cli4) 並調整部分畫面及用色。
+為轉換使用 Vue Cli 3 版本以及較新插件版本，已移植至此 [GitHub 連結](https://github.com/Nighthree/ChocolateShop_vue_cli4) 並調整部分畫面及用色。
 
 Skills | 使用技術
 -----------
