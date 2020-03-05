@@ -27,7 +27,7 @@
           <div class="col-lg-8 col-md-10 col-12">
             <h2 class="text-Choco font-weight-bold h4 text-center py-3 mb-0">
               <img
-                src="https://raw.githubusercontent.com/Nighthree/ChocolateShop/master/src/assets/images/chocolate_icon.png"
+                src="../assets/images/chocolate_icon.png"
                 style="height:30px"
               />訂購資訊
             </h2>
@@ -112,7 +112,7 @@
           <div class="col-lg-8 col-md-10 col-12 text-Choco mb-5">
             <h2 class="font-weight-bold h4 text-center py-3 mb-0">
               <img
-                src="https://raw.githubusercontent.com/Nighthree/ChocolateShop/master/src/assets/images/chocolate_icon.png"
+                src="../assets/images/chocolate_icon.png"
                 style="height:30px"
               />填寫訂購資料
             </h2>

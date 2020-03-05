@@ -18,7 +18,7 @@
     <div class="minHeight">
       <h3 class="text-center text-Choco mb-3">
         <img
-          src="https://raw.githubusercontent.com/Nighthree/ChocolateShop/master/src/assets/images/chocolate_icon.png"
+          src="../assets/images/chocolate_icon.png"
           style="height:30px"
         />確認訂購資料
       </h3>

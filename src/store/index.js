@@ -10,8 +10,8 @@ export default new Vuex.Store({
   strict: true, //開啟嚴謹模式
   state: {
     status: {
-      isLoading: false, //有用到
-      categories: [], //有用到
+      isLoading: false,
+      categories: [],
       searchTextItem: '',
       addCartLoading: '',
     },
@@ -94,9 +94,4 @@ export default new Vuex.Store({
       state.status.addCartLoading = payload;
     },
   },
-
-  getters,
-
-
-
 });

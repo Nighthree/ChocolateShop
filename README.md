@@ -4,6 +4,9 @@
 > A Vue.js project
 
 > Only used in Portfolio
+<a herf="https://nighthree.github.io/ChocolateShop/">Demo</a>
+
+為轉換使用 Vue Cli 3 版本，已移植至此<a herf="https://github.com/Nighthree/ChocolateShop_vue_cli4"> GitHub </a>並調整部分畫面及用色。
 
 Skills | 使用技術
 -----------
