@@ -4,6 +4,7 @@
 > A Vue.js project
 
 > Only used in Portfolio
+
 Demo　https://nighthree.github.io/ChocolateShop/
 
 
