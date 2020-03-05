@@ -5,11 +5,9 @@
 
 > Only used in Portfolio
 
-Demo　https://nighthree.github.io/ChocolateShop/
+[Demo](https://nighthree.github.io/ChocolateShop/)  
 
-
-為轉換使用 Vue Cli 3 版本，已移植至以下 GitHub 並調整部分畫面及用色。
-https://github.com/Nighthree/ChocolateShop_vue_cli4
+為轉換使用 Vue Cli 3 版本，已移植至此 [GitHub 連結](https://github.com/Nighthree/ChocolateShop_vue_cli4) 並調整部分畫面及用色。
 
 
 Skills | 使用技術
@@ -32,9 +30,9 @@ Skills | 使用技術
 Plugins | 使用插件
 -----------
 <ul>
-<li>vue-axios https://www.npmjs.com/package/vue-axios </li>
-<li>vue-loading-overlay https://www.npmjs.com/package/vue-loading-overlay</li>
-<li>vee-validate https://logaretm.github.io/vee-validate/</li>
+<li>[vue-axios](https://www.npmjs.com/package/vue-axios) </li>
+<li>[vue-loading-overlay](https://www.npmjs.com/package/vue-loading-overlay)</li>
+<li>[vee-validate](https://logaretm.github.io/vee-validate/)</li>
 </ul>
 
 
